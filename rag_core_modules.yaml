@@ -1,0 +1,254 @@
+# RAG Core Modules Configuration
+# Version: v3.7.0
+# Converted from: RAG_CORE_MODULES.md
+# Purpose: Core content structure and emotional pacing for LLM prompts
+
+version: "3.7.0"
+pattern_ref_prefix: "!RAG_CORE_MODULES"
+compiled_from:
+  - "Hook Template Bank v3.7.0"
+  - "Script Format Blueprint v3.7.0"
+
+# ===== DEFAULT TONE =====
+default_tone:
+  baseline_emotional_state: "curious_engagement_with_cultural_authenticity"
+  indonesian_gen_z_markers:
+    - "natural_code_switching_indonesian_english"
+    - "generational_slang_integration"
+    - "cultural_reference_appropriateness"
+    - "family_value_respect_with_individual_expression"
+  emotional_range_reference: &range_default
+    curiosity: "0_disinterested_to_10_must_know_immediately"
+    tension: "0_relaxed_to_10_edge_of_seat"
+    satisfaction: "0_unfulfilled_to_10_completely_satisfied"
+    connection: "0_disconnected_to_10_deeply_related"
+
+# ===== HOOK PATTERNS =====
+hook_patterns:
+  module_id: "hook_patterns"
+  enabled: true
+  creator_dna_analysis:
+    gadgetin:
+      core_traits: "clear_logic_tech_forward_analytical_approach"
+    jovial:
+      core_traits: "satirical_absurdism_overactor_energy_dramatic_expressions"
+    samuel:
+      core_traits: "motivational_relatable_storytelling_personal_growth_focus"
+
+# ADD TO rag_core_modules.yaml
+viral_hook_engine:
+  module_id: "viral_hook_engine"
+  enabled: true
+  psychological_triggers:
+    cognitive_dissonance:
+      - pattern: "Dulu gue [belief], ternyata [opposite_reality]"
+      - activation: "when topic involves mindset/belief change"
+    
+    authority_questioning:
+      - pattern: "Yang [authority_figure] gak mau kalian tau tentang [topic]"
+      - activation: "when topic involves industry/institutional critique"
+    
+    social_proof_challenge:
+      - pattern: "Everyone's doing [trend] wrong, ini cara yang bener"
+      - activation: "when topic involves popular practices"
+    
+    group_identity_threat:
+      - pattern: "Gen Z yang masih [assumption] perlu denger ini"
+      - activation: "when topic involves generational commentary"
+
+  hook_archetype_pool:
+    personal_contradiction: 0.25
+    exposed_secret: 0.25
+    generational_callout: 0.25
+    cultural_inversion: 0.25
+    
+# ===== FALLBACK CHAIN =====
+fallback_chain:
+  module_id: "fallback_chain"
+  enabled: true
+  primary_fallbacks:
+    style_fusion_failure:
+      condition: "fusion_feels_unnatural_or_forced"
+      action: "revert_to_single_creator_style"
+    cultural_sensitivity_flag:
+      condition: "potential_cultural_offense_detected"
+      action: "immediate_pivot_to_respectful_alternative"
+
+# ===== EMOTIONAL VALLEY =====
+emotional_valley:
+  module_id: "emotional_valley"
+  enabled: true
+  concept: "optional_emotional_cooldown_period_1_2_lines_after_twist"
+  purpose: "allows_audience_processing_time_before_transitioning_to_ending"
+  implementation_criteria:
+    when_to_use:
+      - "high_intensity_twists_creating_significant_emotional_cognitive_disruption"
+      - "cultural_sensitivity_when_twist_touches_sensitive_topics"
+  emotional_range_reference: *range_default
+
+# ===== TWIST ENGINE =====
+twist_generation_engine:
+  module_id: "twist_generation_engine"
+  enabled: true
+  use_narrative_inversion: true
+  preferred_twist_style: emotional_shift
+  twist_template:
+    - setup: "initial belief"
+      trigger: "conflict or realization"
+      twist: "reversed emotional payoff"
+  validator:
+    enforce_surprise: true
+    enforce_contrast_with_body: true
+
+# ✅ PATCHED MODULE — EDU MODE ENGINE
+edu_mode_engine:
+  triggers:
+    - topic: ["AI", "sains", "sistem kerja", "teknologi masa depan"]
+      tone: "reflektif"
+  behavior:
+    - prioritize_fact_check: true
+    - simplify_language: true
+    - emphasize_learning: true
+
+# ✅ PATCHED MODULE — EDUCATIONAL FACT INSERTER
+educational_fact_inserter:
+  module_id: "educational_fact_inserter"
+  enabled: true
+  trigger_fields: ["script"]
+  conditions:
+    topic_match: ["biocomputing", "AI hardware", "neuromorphic"]
+  insert_type: "inline_number"
+  data_source: ["wiki.techfacts", "cortical_labs.pub", "pubmed.live"]
+  fallback: "use_fact_template"
+
+# ===== KLING ADAPTATION LOGIC =====
+kling_adaptation_logic:
+  module_id: "kling_adaptation"
+  enabled: true
+  enable_causal_chain: true
+  causal_graph_template:
+    - id: A
+      event: "Character discovers clue"
+    - id: B
+      event: "Character investigates"
+      cause: A
+    - id: C
+      event: "Twist is revealed"
+      cause: B
+  segment_binding_rule: "Match Kling prompt to causal node ID"
+
+# ADD TO rag_core_modules.yaml
+# INSERT AFTER: kling_adaptation_logic section (around line ~90)
+# INSERT BEFORE: modules registry section (around line ~110)  
+fomo_controversy_engine:
+  module_id: "viral_amplification_triggers"
+  enabled: true
+  
+  fomo_mechanics:
+    limited_knowledge:
+      patterns:
+        - "Cuma 10% orang yang actually paham ini"
+        - "Most people don't know this industry secret"
+        - "Info ini jarang banget dishare publicly"
+      activation_trigger: "when educational_content = true"
+    
+    time_sensitivity:
+      patterns:
+        - "Before trend ini dead, kalian harus tau"
+        - "Sebelum terlambat, ini yang perlu kalian prepare"
+        - "Window opportunity ini cuma sebentar"
+      activation_trigger: "when trend_related = true"
+  
+  controversy_injection:
+    debate_starters:
+      patterns:
+        - "Unpopular opinion: [controversial_take]"
+        - "Everyone's wrong about [topic], ini kenapa"
+        - "Hot take yang bakal bikin triggered: [statement]"
+      psychological_trigger: "group_polarization"
+    
+    authority_challenge:
+      patterns:
+        - "[Industry/Expert] bilang [claim], tapi ini realitanya"
+        - "Yang [authority_figure] gak mau kalian tau"
+        - "Behind the scenes [industry] yang mereka sembunyiin"
+      psychological_trigger: "anti_establishment"
+      
+# ===== MODULE REGISTRY =====
+modules:
+  - name: hook_generator
+    function: "Generates culturally grounded hook lines"
+    depends_on: []
+  - name: emotional_pacer
+    function: "Modulates emotional pacing across segments"
+    depends_on: [hook_generator]
+  - name: style_imprinter
+    function: "Applies creator style DNA to script"
+    depends_on: [hook_generator]
+  - name: tone_shifter
+    function: "Adjusts tone transitions per segment"
+    depends_on: [emotional_pacer, style_imprinter]
+  - name: visual_sync_mapper
+    function: "Aligns script segments to visual beat timing"
+    depends_on: [tone_shifter]
+  - name: emotional_glide_engine
+    function: "Controls micro-emotional transitions within segments"
+    depends_on: [emotional_pacer, tone_shifter]
+  - name: validator_interface
+    function: "Ensures output meets all QA, safety, and engagement standards"
+    depends_on: [hook_generator, style_imprinter, emotional_pacer, tone_shifter]
+  - name: fallback_tone_handler
+    function: "Fallback engine when tone/style mismatch detected"
+    depends_on: [validator_interface]
+  - name: twist_optimizer
+    function: "Ensures narrative twists follow emotional & logical arc"
+    depends_on: [emotional_pacer, tone_shifter]
+  - name: thumbnail_emotion_checker
+    function: "Verifies thumbnail tone alignment to script content"
+    depends_on: [hook_generator, emotional_glide_engine]
+  - name: edu_mode_engine
+    function: "Adjusts content style to reflective educational tone when triggered"
+    depends_on: [hook_generator, style_imprinter]
+  - name: narrative_consistency_enforcer
+    function: "Ensures logical coherence and segment consistency across script"
+    depends_on: [hook_generator, tone_shifter, style_imprinter]
+
+# Tambahkan di bawah ini
+module_index:
+  hook_generator: "*modules[name=hook_generator]"
+  visual_sync_mapper: "*modules[name=visual_sync_mapper]"
+  narrative_consistency_enforcer: "*modules[name=narrative_consistency_enforcer]"
+  edu_mode_engine: "*modules[name=edu_mode_engine]"
+  emotional_valley: "*modules[name=emotional_valley]"
+  viral_hook_engine: "*modules[name=viral_hook_engine]"
+  fomo_controversy_engine: "*modules[name=fomo_controversy_engine]"
+
+  
+# ===== STYLE FUSION SETTINGS =====
+style_fusion:
+  primary_style: "samuel"
+  secondary_style: "jovial"
+  tertiary_style: "gadgetin"
+  fusion_mode: "weighted_blend"
+  dynamic_weighting_enabled: true
+  
+# ===== LOOKUP HELPERS =====
+hook_bank_lookup:
+  module_id: "hook_bank_lookup"
+  enabled: true
+  source: "!RAG_CORE_MODULES/HOOK_PATTERNS"
+  return: "top_k_patterns"
+  k: 5
+
+persona_style_guide:
+  module_id: "persona_style_guide"
+  enabled: true
+  source: "!STYLE_ENGINE/STYLE_WEIGHTS"
+  return: "persona_bias_map"
+
+trending_meme_snippet:
+  module_id: "trending_meme_snippet"
+  enabled: true
+  source: "!RAG_ENGAGEMENT/MEME_TRIGGER"
+  return: "latest_meme_format"
+  recency_days: 30

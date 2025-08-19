@@ -1,0 +1,219 @@
+# RAG Character Sheet Configuration
+# Version: v3.7.0
+# Purpose: Character consistency for Kling visual continuity
+# Created: Patch implementation for v3.7.0 upgrade
+
+version: "3.7.0"
+pattern_ref_prefix: "!RAG_CHARACTER_SHEET"
+purpose: "Inject character traits to support Kling visual continuity"
+
+# ===== CHARACTER SHEET SYSTEM =====
+character_sheet:
+  enabled: true
+  character_defaults:
+    - name: "ALI SADIKIN"
+      traits:
+        - "red jacket"
+        - "short brown hair"
+        - "glasses"
+      persist_across_segments: true
+  
+  # Extended Character Profiles for Indonesian Content Creators
+  creator_personas:
+    gadgetin_persona:
+      name: "Tech Reviewer"
+      visual_traits:
+        - "clean modern aesthetic"
+        - "tech gadgets visible in background"
+        - "professional lighting setup"
+        - "minimalist workspace"
+      clothing_style: "casual professional"
+      setting_preferences: "modern tech environment"
+      prop_consistency: ["smartphone", "laptop", "tech accessories"]
+    
+    jovial_persona:
+      name: "Cultural Commentator"
+      visual_traits:
+        - "expressive facial features"
+        - "dynamic gestures"
+        - "colorful casual clothing"
+        - "Indonesian cultural elements in background"
+      clothing_style: "trendy casual"
+      setting_preferences: "vibrant social spaces"
+      prop_consistency: ["cultural artifacts", "social media props", "expressive accessories"]
+    
+    samuel_persona:
+      name: "Life Coach"
+      visual_traits:
+        - "warm approachable appearance"
+        - "comfortable intimate setting"
+        - "soft natural lighting"
+        - "personal growth books visible"
+      clothing_style: "comfortable authentic"
+      setting_preferences: "cozy personal spaces"
+      prop_consistency: ["books", "plants", "comfort items"]
+
+# ===== VISUAL CONTINUITY RULES =====
+visual_continuity:
+  character_consistency_enforcement:
+    facial_features: "maintain_across_all_segments"
+    clothing: "consistent_within_single_video"
+    accessories: "track_and_maintain"
+    hairstyle: "preserve_throughout_content"
+  
+  setting_consistency:
+    background_elements: "maintain_spatial_logic"
+    lighting_conditions: "preserve_mood_and_time"
+    prop_placement: "logical_object_persistence"
+    camera_angles: "maintain_perspective_continuity"
+  
+  transition_rules:
+    scene_changes: "logical_spatial_progression"
+    time_progression: "maintain_temporal_coherence"
+    character_movement: "natural_motion_flow"
+    prop_interaction: "consistent_object_behavior"
+
+# ===== KLING INTEGRATION SPECIFICATIONS =====
+kling_integration:
+  prompt_injection_points:
+    character_description: "inject_at_prompt_beginning"
+    setting_details: "include_in_scene_description"
+    prop_specifications: "detail_in_object_list"
+    continuity_notes: "append_as_consistency_requirements"
+  
+  visual_prompt_templates:
+    character_intro: "A [character_name] with [visual_traits], wearing [clothing_style], in [setting_preference]"
+    scene_continuation: "Same [character_name] from previous scene, maintaining [consistency_elements]"
+    prop_interaction: "[character_name] interacting with [prop_list], consistent with previous segments"
+  
+  quality_assurance:
+    consistency_validation: "check_character_traits_across_segments"
+    visual_coherence: "verify_setting_and_prop_continuity"
+    narrative_flow: "ensure_logical_scene_progression"
+    brand_alignment: "maintain_creator_visual_identity"
+
+# ===== INDONESIAN CULTURAL CONTEXT =====
+cultural_context:
+  indonesian_character_traits:
+    facial_features: "southeast_asian_characteristics"
+    clothing_preferences: "modern_indonesian_fashion"
+    cultural_accessories: "appropriate_cultural_elements"
+    setting_elements: "indonesian_environmental_context"
+  
+  generational_markers:
+    gen_z_indicators:
+      - "contemporary_fashion_choices"
+      - "modern_technology_integration"
+      - "social_media_aware_aesthetics"
+      - "urban_indonesian_lifestyle_elements"
+  
+  cultural_sensitivity:
+    religious_considerations: "respectful_representation"
+    traditional_elements: "appropriate_cultural_integration"
+    modern_balance: "contemporary_traditional_harmony"
+    regional_diversity: "inclusive_indonesian_representation"
+
+# ===== CREATOR-SPECIFIC CHARACTER SHEETS =====
+creator_character_sheets:
+  gadgetin_character:
+    base_appearance:
+      age_range: "25-30"
+      style: "tech_professional"
+      personality_visual_cues: "confident_analytical"
+    
+    segment_variations:
+      hook_appearance: "curious_engaged_expression"
+      body_appearance: "authoritative_explanatory_mode"
+      twist_appearance: "surprised_revelation_expression"
+      ending_appearance: "satisfied_conclusive_demeanor"
+    
+    consistency_requirements:
+      - "maintain_professional_tech_aesthetic"
+      - "preserve_analytical_facial_expressions"
+      - "consistent_modern_workspace_background"
+      - "tech_gadget_props_appropriately_placed"
+  
+  jovial_character:
+    base_appearance:
+      age_range: "22-28"
+      style: "expressive_satirical"
+      personality_visual_cues: "dynamic_humorous"
+    
+    segment_variations:
+      hook_appearance: "shocked_dramatic_expression"
+      body_appearance: "storytelling_animated_gestures"
+      twist_appearance: "absurdist_realization_face"
+      ending_appearance: "wise_satirical_conclusion"
+    
+    consistency_requirements:
+      - "maintain_expressive_dynamic_energy"
+      - "preserve_cultural_commentary_aesthetic"
+      - "consistent_vibrant_social_background"
+      - "cultural_prop_elements_appropriately_used"
+  
+  samuel_character:
+    base_appearance:
+      age_range: "26-32"
+      style: "warm_empathetic"
+      personality_visual_cues: "vulnerable_inspiring"
+    
+    segment_variations:
+      hook_appearance: "vulnerable_honest_expression"
+      body_appearance: "empathetic_teaching_mode"
+      twist_appearance: "empowering_realization_moment"
+      ending_appearance: "grateful_inspiring_conclusion"
+    
+    consistency_requirements:
+      - "maintain_warm_approachable_aesthetic"
+      - "preserve_authentic_emotional_expressions"
+      - "consistent_intimate_personal_background"
+      - "personal_growth_props_meaningfully_placed"
+
+# ===== IMPLEMENTATION GUIDELINES =====
+implementation:
+  kling_prompt_generation:
+    character_injection: "automatic_character_trait_insertion"
+    consistency_checking: "cross_segment_validation"
+    visual_coherence: "scene_to_scene_continuity_verification"
+    quality_control: "character_sheet_compliance_monitoring"
+  
+  fallback_protocols:
+    character_inconsistency_detected:
+      action: "revert_to_base_character_sheet"
+      implementation: "use_default_character_traits"
+      recovery: "rebuild_consistency_from_established_baseline"
+    
+    visual_continuity_failure:
+      action: "apply_consistency_correction"
+      implementation: "inject_continuity_requirements_into_prompt"
+      recovery: "regenerate_with_enhanced_character_specifications"
+  
+  performance_optimization:
+    character_trait_caching: "store_established_character_elements"
+    prompt_efficiency: "minimize_redundant_character_descriptions"
+    consistency_validation: "automated_character_sheet_compliance_checking"
+    visual_quality_assurance: "character_consistency_scoring_system"
+
+# ===== VALIDATION FRAMEWORK =====
+validation:
+  character_consistency_metrics:
+    visual_trait_preservation: "percentage_of_traits_maintained_across_segments"
+    setting_continuity: "spatial_logical_consistency_score"
+    prop_tracking: "object_persistence_accuracy"
+    narrative_coherence: "character_development_logical_progression"
+  
+  quality_assurance_checklist:
+    - "character_visual_traits_consistent_across_all_segments"
+    - "clothing_and_accessories_appropriately_maintained"
+    - "setting_elements_logically_continuous"
+    - "prop_interactions_realistic_and_consistent"
+    - "cultural_representation_respectful_and_accurate"
+    - "creator_brand_identity_preserved_throughout"
+    - "kling_prompt_integration_seamless_and_effective"
+  
+  continuous_improvement:
+    feedback_integration: "community_input_on_character_consistency"
+    performance_monitoring: "visual_continuity_success_rate_tracking"
+    creator_collaboration: "direct_creator_input_on_character_representation"
+    technical_optimization: "kling_integration_efficiency_improvements"
+

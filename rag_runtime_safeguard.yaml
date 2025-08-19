@@ -1,0 +1,97 @@
+# RAG Runtime Safeguard Configuration
+# Version: 3.7.0
+# Converted from: RAG_RUNTIME_SAFEGUARD.md
+# Purpose: Runtime safety validation and cultural protection protocols
+
+version: "3.7.0"
+pattern_ref_prefix: "!RAG_RUNTIME_SAFEGUARD"
+compiled_from:
+  - "Legacy safeguard protocols"
+  - "Cultural sensitivity enhancements"
+
+module_registration:
+  id: "runtime_safeguard"
+  role: "prevention_engine"
+  activated_by: ["hallucination_block", "klingai_prompt_validator", "flush_protocol"]
+
+registered_modules:
+  - originality_guard
+  - fact_check_filter
+  - structure_language_enforcer
+  
+# === RUNTIME SAFEGUARD RULES ===
+ruleset:
+  hallucination_block:
+    enabled: true
+    trigger_keywords:
+      - "quantum time travel"
+      - "psychic future self"
+  visual_constraints:
+    # PATCH: KLINGFIX-R1
+    # DATE: 2025-07-14
+    # AUTHOR: Stella (CTO)  
+    forbidden_visual_elements:
+      - "two characters interacting physically"
+      - "high-five"
+      - "handshake"
+      - "hug"
+      - "fine object manipulation"
+      - "pick up coin"
+      - "text on screen clearly legible"
+      - "typing on keyboard close-up"
+      - "extended continuous movement"
+      - "over 10s continuous camera shot"
+    visual_guard_enforced: true
+    on_violation:
+      - "Regenerate prompt with safe fallback"
+      - "Notify user: prompt violated KlingAI constraints"
+
+# ===== CULTURAL SENSITIVITY PROTOCOLS =====
+
+TOPIC_VALIDATOR:
+  input_fields: ["title", "HOOK"]
+  ambiguity_threshold: 0.75
+  action_if_ambiguous: "fallback_to_default_fusion"
+  log_action: true
+
+fallback_override_handler:
+  rule:
+    - override_trigger: ["emotion_flat", "style_clash", "logic_loop"]
+    - priority: ["style_fusion_driver", "emotional_arc_engine"]
+
+originality_guard:
+  module_id: "originality_guard"
+  enabled: true
+  function: "Mendeteksi dan mengurangi potensi plagiarisme atau pengulangan ide"
+  strategies:
+    - check_redundant_phrases
+    - compare_against_internal_script_history
+    - limit_template_overuse
+
+fact_check_filter:
+  module_id: "fact_check_filter"
+  enabled: true
+  function: "Menyaring klaim yang tidak terverifikasi atau berpotensi menyesatkan"
+  rules:
+    - require_source_match_for_factual_claims
+    - block_hallucinated_technical_terms
+    - downgrade_confidence_for_untestable_opinions
+    
+structure_language_enforcer:
+  enabled: true
+  # Ganti daftar field teknis → emoji markers yang dipakai CINEGENIX
+  enforce_fields: ["Title", "⏱️", "🎥", "🎙️", "😲", "🎬"]
+  allow_script_lang: ["id"]
+  # Opsional: peta interpretasi untuk downstream tools
+  map_emoji_to_fields:
+    "⏱️": "timestamp_range"
+    "🎥": "visual_direction"
+    "🎙️": "script"
+    "😲": "emotional_label"
+    "🎬": "scene_transition"
+
+validator_yaml_bridge:
+  enforce_output_structure_language: true
+  allowed_languages:
+    - structure: "en"
+    - script: "id"

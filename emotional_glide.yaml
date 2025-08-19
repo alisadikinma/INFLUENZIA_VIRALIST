@@ -1,0 +1,46 @@
+# emotional_glide.yaml
+# Purpose: Modulates subtle emotional transitions between narrative segments
+
+version: "3.7.0"
+compiled_for: "v3.7.0"
+
+aliases:
+  strong_valley: valley_to_climax
+
+glide_profiles:
+  valley_to_climax:
+    transition_type: "rising_tension"
+    emotional_shift: ["doubt", "curiosity", "anticipation", "relief"]
+    typical_duration: "4-7 seconds"
+  climax_to_resolution:
+    transition_type: "emotional_release"
+    emotional_shift: ["relief", "triumph", "reflection"]
+    typical_duration: "3-6 seconds"
+  flat_to_peak:
+    transition_type: "surprise_injection"
+    emotional_shift: ["neutral", "confusion", "shock", "discovery"]
+    typical_duration: "2-4 seconds"
+
+modulation_rules:
+  intensity_modulation:
+    based_on:
+      - "viewer_retention_data"
+      - "segment_emotion_score"
+    action: "adjust_segment_pacing_and_music_cue"
+  visual_transition_support:
+    use_overlay: true
+    transition_styles: ["fade-in", "flash-cut", "zoom"]
+  audio_support:
+    use_ambient_emotion: true
+    cue_library: ["hope", "tension", "resolution", "mystery"]
+
+activation_conditions:
+  - "narrative shift detected between segments"
+  - "emotional contrast > 0.4 threshold"
+  - "CTA type requires emotional ramp-up"
+
+validation_tags:
+  - "emotional_shift_consistency"
+  - "glide_duration_tuning"
+  - "audio_visual_support_alignment"
+  - "transition_type_match"
