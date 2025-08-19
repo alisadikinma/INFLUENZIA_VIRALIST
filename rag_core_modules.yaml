@@ -1,13 +1,13 @@
 # RAG Core Modules Configuration
-# Version: v3.7.0
+# Version: v3.8.0
 # Converted from: RAG_CORE_MODULES.md
 # Purpose: Core content structure and emotional pacing for LLM prompts
 
-version: "3.7.0"
+version: "3.8.0"
 pattern_ref_prefix: "!RAG_CORE_MODULES"
 compiled_from:
-  - "Hook Template Bank v3.7.0"
-  - "Script Format Blueprint v3.7.0"
+  - "Hook Template Bank v3.8.0"
+  - "Script Format Blueprint v3.8.0"
 
 # ===== DEFAULT TONE =====
 default_tone:
@@ -173,7 +173,235 @@ fomo_controversy_engine:
         - "Yang [authority_figure] gak mau kalian tau"
         - "Behind the scenes [industry] yang mereka sembunyiin"
       psychological_trigger: "anti_establishment"
+
+# PATCH INSTRUCTIONS FOR rag_core_modules.yaml
+# Version: v3.7.0 → v3.8.0
+# Enhancement: Deep Research Engine Integration
+# ===== STEP 1: ADD AFTER line ~85 (after fomo_controversy_engine section) =====
+# INSERT THIS ENTIRE SECTION:
+
+deep_research_engine:
+  module_id: "comprehensive_research_pipeline"
+  enabled: true
+  activation_trigger: "post_fact_verification_success"
+  priority: "CRITICAL_CONTENT_ENRICHMENT"
+  
+  research_depth_auto_selection:
+    trigger_conditions:
+      basic_research:
+        - "simple_topics_with_clear_context"
+        - "well_established_facts"
+        - "non_controversial_subjects"
+        sources_target: "3_to_5_sources"
+        
+      comprehensive_research:
+        - "complex_technical_topics"
+        - "trending_controversial_issues"
+        - "health_medical_information"
+        - "financial_economic_topics"
+        sources_target: "8_to_12_sources"
+        
+      expert_level_research:
+        - "breaking_news_developments"
+        - "scientific_research_topics"
+        - "legal_regulatory_matters"
+        - "policy_government_issues"
+        sources_target: "15_plus_sources"
+
+  research_execution_strategy:
+    foundation_building:
+      core_fact_expansion: "verify_and_expand_initial_verified_claims"
+      knowledge_gap_identification: "map_missing_information_areas"
+      stakeholder_mapping: "identify_key_experts_affected_parties"
+      opposing_viewpoint_discovery: "find_alternative_perspectives"
+    
+    information_gathering:
+      multi_angle_collection:
+        - "technical_scientific_perspective"
+        - "social_cultural_impact_analysis"
+        - "economic_implications_assessment"
+        - "political_regulatory_considerations"
+        - "ethical_moral_dimensions"
       
+      data_synthesis:
+        - "identify_expert_consensus_points"
+        - "highlight_ongoing_controversies"
+        - "note_acknowledged_uncertainties"
+        - "compile_supporting_statistical_evidence"
+    
+    insight_development:
+      viral_angle_discovery:
+        - "counterintuitive_surprising_findings"
+        - "myth_busting_opportunities"
+        - "personal_impact_connection_stories"
+        - "future_implication_scenarios"
+      
+      narrative_construction:
+        - "compelling_storyline_development"
+        - "human_interest_angle_identification"
+        - "universal_relevance_connection"
+        - "surprising_connection_discovery"
+
+  indonesian_contextualization:
+    local_relevance_research:
+      indonesian_specific_data:
+        - "local_statistics_and_impact_data"
+        - "regional_variation_analysis"
+        - "government_policy_response_research"
+        - "cultural_adaptation_examples"
+      
+      cultural_bridge_building:
+        - "international_versus_local_approach_comparison"
+        - "traditional_versus_modern_perspective_analysis"
+        - "generational_difference_research"
+        - "cultural_value_implication_assessment"
+    
+    gen_z_angle_development:
+      generational_impact_research:
+        - "future_career_implication_analysis"
+        - "digital_native_perspective_research"
+        - "social_media_generation_effect_study"
+        - "emerging_lifestyle_change_documentation"
+      
+      youth_engagement_elements:
+        - "meme_worthy_moment_identification"
+        - "social_media_shareable_insight_discovery"
+        - "challenge_opportunity_framing"
+        - "empowerment_narrative_development"
+
+  content_enrichment_strategies:
+    statistical_enhancement:
+      data_sourcing_priorities:
+        - "official_government_statistics"
+        - "academic_research_institution_data"
+        - "international_organization_reports"
+        - "credible_polling_organization_results"
+      
+      data_presentation_optimization:
+        - "shocking_but_verified_statistics"
+        - "before_after_trend_comparisons"
+        - "comparative_analysis_with_other_countries"
+        - "predictive_scenario_modeling"
+    
+    expert_voice_integration:
+      expert_category_targeting:
+        - "academic_researchers_in_field"
+        - "industry_practitioners_with_experience"
+        - "policy_makers_and_government_officials"
+        - "affected_community_representatives"
+      
+      quote_mining_strategy:
+        - "memorable_expert_statement_extraction"
+        - "contrarian_expert_opinion_discovery"
+        - "predictive_expert_insight_collection"
+        - "explanatory_expert_analogy_gathering"
+    
+    human_story_integration:
+      personal_impact_story_research:
+        - "individual_success_transformation_stories"
+        - "cautionary_tale_example_documentation"
+        - "community_impact_story_collection"
+        - "family_life_change_narrative_research"
+      
+      relatability_bridge_construction:
+        - "everyday_application_example_finding"
+        - "personal_relevance_connection_research"
+        - "career_life_implication_analysis"
+        - "family_impact_scenario_development"
+
+  research_quality_assurance:
+    source_diversity_requirements:
+      geographic_diversity: "minimum_3_different_regional_perspectives"
+      temporal_diversity: "mix_recent_and_historical_sources"
+      perspective_diversity: "multiple_stakeholder_viewpoint_inclusion"
+      methodological_diversity: "quantitative_and_qualitative_source_balance"
+    
+    bias_detection_and_mitigation:
+      bias_identification_targets:
+        - "political_ideological_bias_detection"
+        - "commercial_corporate_interest_bias"
+        - "cultural_regional_bias_awareness"
+        - "confirmation_bias_in_source_selection"
+      
+      balance_mechanisms:
+        - "deliberate_opposing_viewpoint_seeking"
+        - "neutral_academic_source_prioritization"
+        - "uncertainty_acknowledgment_where_appropriate"
+        - "limitation_acknowledgment_inclusion"
+
+  viral_integration_optimization:
+    research_to_viral_bridge:
+      information_hierarchy: "most_viral_worthy_information_prioritized"
+      complexity_management: "simplification_without_accuracy_loss"
+      cultural_translation: "universal_concepts_to_indonesian_context"
+      engagement_optimization: "research_insights_to_viral_hook_elements"
+    
+    educational_entertainment_balance:
+      knowledge_transfer_optimization: "ensure_genuine_learning_occurs"
+      entertainment_value_maintenance: "viral_mechanics_preserved"
+      accuracy_entertainment_balance: "never_sacrifice_truth_for_engagement"
+      cultural_relevance_integration: "indonesian_context_appropriateness"
+
+  output_structuring:
+    research_synthesis_format:
+      core_narrative: "primary_compelling_story_angle"
+      supporting_evidence: "facts_statistics_expert_quotes_compilation"
+      counterpoint_inclusion: "alternative_perspectives_uncertainty_acknowledgment"
+      indonesian_relevance: "local_context_cultural_implication_analysis"
+      viral_hook_opportunities: "surprising_counterintuitive_shareable_element_list"
+      human_interest_elements: "personal_story_relatable_example_collection"
+    
+    script_foundation_preparation:
+      hook_opportunity_list: "potential_opening_angle_options"
+      body_content_structure: "logical_information_flow_organization"
+      twist_potential_identification: "surprising_revelation_plot_twist_options"
+      cta_direction_suggestions: "audience_action_item_possibilities"
+      emotional_journey_design: "planned_emotional_arc_progression"
+
+# ===== STEP 2: UPDATE existing educational_fact_inserter (around line ~75) =====
+# REPLACE the existing educational_fact_inserter with:
+
+educational_fact_inserter:
+  module_id: "legacy_fact_inserter"
+  enabled: false  # Disabled in favor of deep_research_engine
+  deprecated: "replaced_by_comprehensive_deep_research_engine"
+  migration_note: "functionality_absorbed_into_deep_research_engine"
+
+# ===== STEP 3: UPDATE modules registry section (around line ~110) =====
+# ADD this entry to the modules list:
+
+  - name: deep_research_engine
+    function: "Comprehensive multi-source research for informatif viral content"
+    depends_on: [fact_verification_success]
+    priority: "critical_content_enrichment"
+
+# ===== STEP 4: UPDATE module_index section (around line ~140) =====
+# ADD this entry:
+
+  deep_research_engine: "*modules[name=deep_research_engine]"
+
+# ===== STEP 5: ADD integration section at end of file =====
+
+research_engine_integration:
+  handoff_protocols:
+    from_fact_verification: "verified_content_becomes_research_foundation"
+    to_hook_generator: "research_insights_inform_viral_hook_creation"
+    to_style_fusion: "research_depth_influences_creator_selection"
+    to_script_structure: "research_synthesis_shapes_content_organization"
+  
+  performance_optimization:
+    research_caching: "store_research_results_for_similar_topics"
+    source_prioritization: "rank_sources_by_reliability_and_viral_potential"
+    insight_extraction: "automated_viral_angle_identification"
+    cultural_adaptation: "automatic_indonesian_context_integration"
+
+validation_tags:
+  - "deep_research_engine_active"
+  - "multi_source_research_complete"
+  - "indonesian_context_integrated"
+  - "viral_angles_identified"
+  - "educational_value_confirmed"
+
 # ===== MODULE REGISTRY =====
 modules:
   - name: hook_generator

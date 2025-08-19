@@ -1,9 +1,9 @@
 # RAG Character Sheet Configuration
-# Version: v3.7.0
+# Version: v3.8.0
 # Purpose: Character consistency for Kling visual continuity
-# Created: Patch implementation for v3.7.0 upgrade
+# Created: Patch implementation for v3.8.0 upgrade
 
-version: "3.7.0"
+version: "3.8.0"
 pattern_ref_prefix: "!RAG_CHARACTER_SHEET"
 purpose: "Inject character traits to support Kling visual continuity"
 
@@ -53,6 +53,303 @@ character_sheet:
       setting_preferences: "cozy personal spaces"
       prop_consistency: ["books", "plants", "comfort items"]
 
+# PATCH INSTRUCTIONS FOR rag_character_sheet.yaml
+# Version: v3.7.0 → v3.8.0
+# Enhancement: Smart Creator Recommendation System
+
+# ===== STEP 1: ADD AFTER line ~25 (after creator_personas section) =====
+# INSERT THIS ENTIRE SECTION:
+
+smart_creator_recommendation_engine:
+  module_id: "intelligent_creator_advisor"
+  enabled: true
+  activation_trigger: "post_research_completion"
+  priority: "CONTENT_AUTHORITY_OPTIMIZATION"
+  
+  topic_analysis_framework:
+    content_categorization:
+      medical_health_topics:
+        detection_keywords:
+          - "medical_terminology_present"
+          - "health_statistics_disease_discussion"
+          - "treatment_prevention_advice"
+          - "medical_research_citations"
+        
+        authority_requirements:
+          primary_recommendation: "medical_professional_persona"
+          secondary_options: ["health_educator", "wellness_coach"]
+          credibility_boost: "+85%_medical_topic_authority"
+      
+      legal_regulatory_topics:
+        detection_keywords:
+          - "legal_terminology_usage"
+          - "regulation_policy_discussion"
+          - "rights_obligations_explanation"
+          - "legal_case_references"
+        
+        authority_requirements:
+          primary_recommendation: "legal_professional_persona"
+          secondary_options: ["policy_analyst", "civic_educator"]
+          credibility_boost: "+90%_legal_topic_authority"
+      
+      business_finance_topics:
+        detection_keywords:
+          - "financial_data_analysis"
+          - "business_strategy_discussion"
+          - "economic_trends_explanation"
+          - "investment_advice_elements"
+        
+        authority_requirements:
+          primary_recommendation: "business_executive_persona"
+          secondary_options: ["financial_advisor", "entrepreneur"]
+          credibility_boost: "+80%_business_topic_authority"
+      
+      technology_innovation_topics:
+        detection_keywords:
+          - "technical_specifications_discussed"
+          - "innovation_trends_analyzed"
+          - "digital_transformation_topics"
+          - "future_technology_predictions"
+        
+        authority_requirements:
+          primary_recommendation: "tech_expert_persona"
+          secondary_options: ["innovation_consultant", "digital_strategist"]
+          credibility_boost: "+85%_technology_topic_authority"
+      
+      social_cultural_topics:
+        detection_keywords:
+          - "cultural_analysis_present"
+          - "social_trends_discussion"
+          - "demographic_insights_shared"
+          - "behavioral_patterns_analyzed"
+        
+        authority_requirements:
+          primary_recommendation: "social_commentator_persona"
+          secondary_options: ["cultural_analyst", "youth_advocate"]
+          credibility_boost: "+75%_social_topic_authority"
+
+  visual_authority_enhancement_system:
+    costume_recommendation_database:
+      medical_professional_setup:
+        primary_costume: "white_medical_coat_with_stethoscope"
+        alternative_options:
+          casual_medical: "scrubs_with_medical_badge"
+          educational_medical: "professional_attire_with_medical_props"
+        
+        essential_props: ["stethoscope", "medical_clipboard", "health_certificates"]
+        setting_recommendations: ["clinical_environment", "medical_office", "health_facility"]
+        
+        indonesian_cultural_adaptation:
+          respect_hierarchy: "maintain_professional_respect_without_intimidation"
+          accessibility: "balance_authority_with_approachability"
+          generational_acceptance: "ensure_gen_z_relatability"
+      
+      legal_professional_setup:
+        primary_costume: "formal_business_suit_with_legal_accessories"
+        alternative_options:
+          casual_legal: "smart_casual_with_law_books"
+          academic_legal: "professor_style_with_legal_references"
+        
+        essential_props: ["law_books", "legal_documents", "justice_symbols"]
+        setting_recommendations: ["law_office", "courtroom_backdrop", "legal_library"]
+        
+        indonesian_cultural_adaptation:
+          authority_balance: "professional_without_elitist_appearance"
+          cultural_sensitivity: "respect_indonesian_legal_traditions"
+          youth_connection: "maintain_generational_bridge"
+      
+      business_executive_setup:
+        primary_costume: "modern_executive_business_attire"
+        alternative_options:
+          startup_executive: "smart_casual_entrepreneur_style"
+          consultant_style: "professional_advisor_appearance"
+        
+        essential_props: ["laptop", "business_documents", "financial_charts"]
+        setting_recommendations: ["modern_office", "boardroom", "business_environment"]
+        
+        indonesian_cultural_adaptation:
+          success_representation: "aspirational_without_disconnected"
+          entrepreneurial_spirit: "reflect_indonesian_business_culture"
+          generational_relevance: "modern_business_leadership_style"
+      
+      tech_expert_setup:
+        primary_costume: "modern_tech_professional_casual"
+        alternative_options:
+          casual_tech: "hoodie_jeans_with_premium_tech"
+          corporate_tech: "business_casual_with_tech_accessories"
+        
+        essential_props: ["latest_gadgets", "multiple_monitors", "tech_innovation_symbols"]
+        setting_recommendations: ["high_tech_office", "innovation_lab", "tech_workspace"]
+        
+        indonesian_cultural_adaptation:
+          innovation_leadership: "represent_indonesian_tech_advancement"
+          accessibility: "tech_expertise_without_intimidation"
+          future_focus: "forward_thinking_generational_leadership"
+      
+      social_commentator_setup:
+        primary_costume: "approachable_casual_professional_style"
+        alternative_options:
+          youth_advocate: "trendy_casual_with_generational_elements"
+          academic_social: "intellectual_casual_with_research_materials"
+        
+        essential_props: ["cultural_artifacts", "social_research_materials", "community_symbols"]
+        setting_recommendations: ["comfortable_social_space", "cultural_backdrop", "community_environment"]
+        
+        indonesian_cultural_adaptation:
+          cultural_authenticity: "genuine_indonesian_cultural_representation"
+          generational_voice: "authentic_gen_z_spokesperson_appearance"
+          social_connection: "community_integrated_not_outsider_observer"
+
+  recommendation_logic_system:
+    automatic_analysis_engine:
+      content_analysis: "analyze_research_results_for_authority_requirements"
+      topic_complexity_assessment: "evaluate_content_technical_depth"
+      audience_trust_needs: "determine_credibility_requirements"
+      cultural_context_consideration: "ensure_indonesian_appropriateness"
+    
+    confidence_scoring_system:
+      recommendation_confidence: "rate_recommendation_accuracy_0_to_100"
+      alternative_option_ranking: "provide_secondary_tertiary_choices"
+      cultural_sensitivity_check: "verify_indonesian_cultural_appropriateness"
+      authority_effectiveness_prediction: "estimate_audience_trust_building_potential"
+    
+    user_interaction_protocol:
+      recommendation_presentation_format:
+        structured_recommendation: |
+          🎭 **REKOMENDASI CREATOR PERSONA UNTUK KONTEN INI**
+          
+          **📊 Topic Analysis:**
+          - Category: {topic_category}
+          - Complexity Level: {complexity_level}
+          - Authority Required: {authority_level_needed}
+          
+          **🥇 PRIMARY RECOMMENDATION:**
+          👤 Creator Persona: {primary_persona}
+          👔 Costume Setup: {primary_costume}
+          🎬 Setting: {primary_setting}
+          💪 Authority Boost: {credibility_boost_percentage}
+          
+          **🥈 ALTERNATIVE OPTIONS:**
+          • Option 2: {secondary_persona} - {secondary_setup}
+          • Option 3: {tertiary_persona} - {tertiary_setup}
+          
+          **💡 REASONING:**
+          {detailed_recommendation_explanation}
+          
+          **📝 SCRIPT DIRECTION SUGGESTIONS:**
+          • Direction 1: {direction_suggestion_1}
+          • Direction 2: {direction_suggestion_2}
+          • Direction 3: {direction_suggestion_3}
+          
+          **🎯 REPLY OPTIONS:**
+          1. "Terima rekomendasi" - Use primary recommendation
+          2. "Pilih alternatif [2/3]" - Use alternative option
+          3. "Custom: [your setup]" - Describe your preferred setup
+          4. "Lanjut" - Let system decide everything automatically
+      
+      response_handling_logic:
+        accept_primary: "PROCEED_WITH_PRIMARY_RECOMMENDATION"
+        choose_alternative: "APPLY_SELECTED_ALTERNATIVE_OPTION"
+        custom_input: "PROCESS_USER_CUSTOM_PERSONA_DIRECTION"
+        system_auto: "SYSTEM_FULL_CREATIVE_CONTROL_MODE"
+
+  script_direction_advisory_system:
+    direction_strategy_categories:
+      educational_authority_approach:
+        content_style: "inform_educate_with_expert_credibility"
+        tone_recommendation: "authoritative_but_accessible_to_audience"
+        structure_suggestion: "problem_explanation_expert_solution"
+        cta_direction: "learn_more_apply_knowledge_consult_expert"
+      
+      investigative_revelation_approach:
+        content_style: "uncover_hidden_truths_expose_misconceptions"
+        tone_recommendation: "curious_revealing_with_authority"
+        structure_suggestion: "mystery_investigation_expert_revelation"
+        cta_direction: "share_findings_investigate_further_verify_claims"
+      
+      opinion_leadership_approach:
+        content_style: "take_strong_authoritative_stance_on_issues"
+        tone_recommendation: "confident_persuasive_with_expertise"
+        structure_suggestion: "position_evidence_expert_call_to_action"
+        cta_direction: "join_movement_take_action_follow_guidance"
+      
+      myth_busting_expert_approach:
+        content_style: "challenge_misconceptions_with_expert_authority"
+        tone_recommendation: "surprising_corrective_with_credibility"
+        structure_suggestion: "myth_expert_facts_truth_revelation"
+        cta_direction: "spread_correct_information_consult_experts"
+      
+      trend_analysis_prediction:
+        content_style: "analyze_predict_trends_with_expert_insight"
+        tone_recommendation: "insightful_forward_thinking_authoritative"
+        structure_suggestion: "current_analysis_expert_future_implications"
+        cta_direction: "prepare_for_future_adapt_strategy_follow_guidance"
+
+# ===== STEP 2: UPDATE existing character_defaults section =====
+# REPLACE the existing character_defaults with enhanced version:
+
+character_defaults:
+  enhanced_character_system:
+    base_character: "ALI_SADIKIN"
+    base_traits: ["professional_attire", "short_brown_hair", "glasses"]
+    
+    dynamic_character_adaptation:
+      medical_persona_overlay:
+        additional_traits: ["white_medical_coat", "stethoscope", "medical_badge"]
+        setting_modification: "clinical_professional_environment"
+        prop_integration: ["medical_equipment", "health_charts"]
+      
+      legal_persona_overlay:
+        additional_traits: ["formal_business_suit", "law_books", "professional_briefcase"]
+        setting_modification: "law_office_or_legal_environment"
+        prop_integration: ["legal_documents", "justice_symbols"]
+      
+      business_persona_overlay:
+        additional_traits: ["executive_attire", "business_laptop", "corporate_documents"]
+        setting_modification: "modern_office_or_boardroom"
+        prop_integration: ["business_charts", "executive_accessories"]
+      
+      tech_persona_overlay:
+        additional_traits: ["tech_professional_casual", "latest_gadgets", "multiple_screens"]
+        setting_modification: "high_tech_office_or_innovation_lab"
+        prop_integration: ["cutting_edge_technology", "innovation_symbols"]
+
+# ===== STEP 3: ADD integration section at end of file =====
+
+creator_recommendation_integration:
+  system_integration_points:
+    research_engine_handoff: "research_results_inform_persona_recommendations"
+    style_fusion_enhancement: "recommended_persona_influences_creator_dna_weights"
+    character_sheet_update: "selected_persona_updates_visual_character_traits"
+    script_adaptation: "persona_choice_influences_language_authority_level"
+  
+  kling_visual_enhancement:
+    costume_prompt_injection: "automatically_inject_costume_details_into_kling_prompts"
+    setting_consistency: "maintain_persona_appropriate_visual_environment"
+    prop_interaction: "natural_authority_prop_usage_in_visual_generation"
+    professional_credibility: "visual_authority_enhancement_through_costume_choice"
+  
+  cultural_sensitivity_protocols:
+    indonesian_context_validation:
+      professional_appropriateness: "ensure_costume_culturally_acceptable_in_indonesia"
+      generational_acceptance: "balance_authority_with_gen_z_relatability"
+      religious_cultural_respect: "respect_indonesian_dress_code_norms"
+      social_hierarchy_awareness: "appropriate_authority_representation_without_elitism"
+    
+    recommendation_cultural_filter:
+      avoid_cultural_disconnection: "prevent_overly_western_professional_stereotypes"
+      maintain_local_relevance: "ensure_persona_resonates_with_indonesian_audience"
+      generational_bridge_building: "connect_authority_with_youth_culture"
+      inclusive_representation: "diverse_indonesian_professional_representation"
+
+validation_tags:
+  - "creator_recommendation_engine_active"
+  - "topic_authority_analysis_complete"
+  - "costume_recommendation_generated"
+  - "cultural_appropriateness_verified"
+  - "script_direction_options_provided"
+  - "user_choice_integration_ready"
+  
 # ===== VISUAL CONTINUITY RULES =====
 visual_continuity:
   character_consistency_enforcement:
