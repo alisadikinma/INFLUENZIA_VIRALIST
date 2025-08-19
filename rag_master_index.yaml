@@ -40,11 +40,11 @@ core_documents:
   replaymax_config:
     pattern_anchors:
       - "variant_scoring"
-  rag_character_sheet:
+  rag_creator_persona_engine:
     pattern_anchors:
-      - "character_sheet"
-      - "visual_continuity"
-      - "kling_integration"
+      - "smart_creator_recommendation_engine"
+      - "visual_authority_enhancement_system"
+      - "cultural_sensitivity_protocols"
 
 deployment_configuration:
   file_locations:
