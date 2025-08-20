@@ -8,23 +8,14 @@ aliases:
   strong_valley: valley_to_climax
 
 glide_profiles:
-  shock: "burst→hold"
-  awe: "hold→glide"
-  curiosity: "explain→anchor"
-  melancholy: "drift→pause"
-  intrigue: "tease→punch"
-  valley_to_climax:
-    transition_type: "rising_tension"
-    emotional_shift: ["doubt", "curiosity", "anticipation", "relief"]
-    typical_duration: "4-7 seconds"
-  climax_to_resolution:
-    transition_type: "emotional_release"
-    emotional_shift: ["relief", "triumph", "reflection"]
-    typical_duration: "3-6 seconds"
-  flat_to_peak:
-    transition_type: "surprise_injection"
-    emotional_shift: ["neutral", "confusion", "shock", "discovery"]
-    typical_duration: "2-4 seconds"
+  default_valley:
+    phases: ["burst","hold","glide"]
+    valley_window: "30s–45s"
+  shock:     { pattern: "burst→hold" }
+  awe:       { pattern: "hold→glide" }
+  curiosity: { pattern: "explain→anchor" }
+  melancholy:{ pattern: "drift→pause" }
+  intrigue:  { pattern: "tease→punch" }
 
 modulation_rules:
   intensity_modulation:

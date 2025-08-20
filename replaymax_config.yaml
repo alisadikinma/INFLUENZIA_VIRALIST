@@ -54,13 +54,13 @@ validation_tags:
   - "replay_trigger_logic"
 
 variant_scoring:
-  base_criteria:
-    - tone_coherence
-    - pacing_integrity
-    - emotional_depth
-    - cta_engagement
-  extended_criteria:
-    - style_topic_alignment: 0.25
+  enabled: true
+  weights:
+    emotional_contrast: 0.5
+    replay_trigger_strength: 0.3
+    cta_novelty: 0.2
+variants:
+  limit: 2
 
 # === PATCH: REPLAYMAX LOGIC v1.1 ===
 
