@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RAG Master Index Configuration
 # Version: v3.8.0
 # Purpose: Routing table and module references for LLM prompt system
@@ -74,3 +75,78 @@ deployment_configuration:
     - "cta_engine"                          # from rag_engagement_modules.yaml
     - "originality_guard"                   # from rag_runtime_safeguard.yaml
     - "structure_language_enforcer"         # CINEGENIX format guard
+=======
+# RAG Master Index Configuration
+# Version: v3.7.0
+# Purpose: Routing table and module references for LLM prompt system
+
+version: "3.7.0"
+system_version: "3.7.0"
+pattern_ref_prefix: "!RAG_MASTER_INDEX"
+generated_for: "RAG integration in KontenKreator GPT v3.7.0"
+
+system_metadata:
+  version_id: "v3.7.0"
+  checksum: "auto_generated_on_deployment"
+  last_updated: "auto_generated_timestamp"
+  migration_date: "2025-08-19"
+  target_system: "KontenKreator GPT"
+
+core_documents:
+  rag_core_modules:
+    pattern_anchors:
+      - "hook_patterns"
+      - "fallback_chain"
+      - "emotional_valley"
+  rag_engagement_modules:
+    pattern_anchors:
+      - "cta_engine"
+      - "aggressive_cta_engine"
+      - "parasocial_relationship_engine"
+  rag_runtime_safeguard:
+    pattern_anchors:
+      - "structure_language_enforcer"
+      - "fallback_override_handler"
+      - "originality_guard"
+  style_engine:
+    pattern_anchors:
+      - "fusion_strategy"
+      - "dynamic_style_fusion"
+  emotional_glide:
+    pattern_anchors:
+      - "glide_profiles"
+  replaymax_config:
+    pattern_anchors:
+      - "variant_scoring"
+  rag_creator_persona_engine:
+    pattern_anchors:
+      - "smart_creator_recommendation_engine"
+      - "visual_authority_enhancement_system"
+      - "cultural_sensitivity_protocols"
+
+deployment_configuration:
+  file_locations:
+    rag_core_modules: "./rag_core_modules.yaml"
+    rag_engagement_modules: "./rag_engagement_modules.yaml"
+    rag_runtime_safeguard: "./rag_runtime_safeguard.yaml"
+    style_engine: "./rag_style_engine.yaml"
+    emotional_glide: "./emotional_glide.yaml"
+    replaymax_config: "./replaymax_config.yaml"
+    rag_master_index: "./rag_master_index.yaml"
+    rag_character_sheet: "./rag_character_sheet.yaml"
+  loading_order:
+    1: "rag_master_index.yaml"
+    2: "rag_runtime_safeguard.yaml"
+    3: "rag_core_modules.yaml"
+    4: "rag_style_engine.yaml"
+    5: "rag_engagement_modules.yaml"
+    6: "emotional_glide.yaml"
+    7: "replaymax_config.yaml"
+    8: "rag_character_sheet.yaml"
+  validation_sequence:
+    1: "yaml_syntax_validation"
+    2: "schema_compliance_checking"
+    3: "cross_reference_validation"
+    4: "dependency_resolution"
+    5: "integration_testing"
+>>>>>>> origin/main

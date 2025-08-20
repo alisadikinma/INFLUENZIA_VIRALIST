@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RAG Creator Persona Engine Configuration
 # Version: v3.8.0
 # Purpose: Smart creator persona recommendation and visual authority enhancement
@@ -462,3 +463,402 @@ validation_tags:
   - "script_direction_advisory_available"
   - "user_interaction_protocol_enabled"
   - "indonesian_context_integration_complete"
+=======
+# RAG Creator Persona Engine Configuration
+# Version: v3.8.0
+# Purpose: Smart creator persona recommendation and visual authority enhancement
+# Refactored from: rag_character_sheet.yaml (removed KlingAI dependencies)
+
+version: "3.8.0"
+pattern_ref_prefix: "!RAG_CREATOR_PERSONA"
+purpose: "Smart creator persona recommendation and visual authority enhancement for manual video production"
+
+# ===== SMART CREATOR RECOMMENDATION ENGINE =====
+smart_creator_recommendation_engine:
+  module_id: "intelligent_creator_advisor"
+  enabled: true
+  activation_trigger: "post_research_completion"
+  priority: "CONTENT_AUTHORITY_OPTIMIZATION"
+  
+  topic_analysis_framework:
+    content_categorization:
+      medical_health_topics:
+        detection_keywords:
+          - "medical_terminology_present"
+          - "health_statistics_disease_discussion"
+          - "treatment_prevention_advice"
+          - "medical_research_citations"
+          - "kesehatan_medis_diagnosis"
+          - "obat_pengobatan_terapi"
+        
+        authority_requirements:
+          primary_recommendation: "medical_professional_persona"
+          secondary_options: ["health_educator", "wellness_coach", "fitness_trainer"]
+          credibility_boost: "+85%_medical_topic_authority"
+          
+        indonesian_context:
+          cultural_sensitivity: "respect_traditional_modern_medicine_balance"
+          trust_building: "combine_medical_authority_with_cultural_understanding"
+      
+      legal_regulatory_topics:
+        detection_keywords:
+          - "legal_terminology_usage"
+          - "regulation_policy_discussion"
+          - "rights_obligations_explanation"
+          - "legal_case_references"
+          - "hukum_undang_undang_peraturan"
+          - "hak_kewajiban_legal"
+        
+        authority_requirements:
+          primary_recommendation: "legal_professional_persona"
+          secondary_options: ["policy_analyst", "civic_educator", "law_student"]
+          credibility_boost: "+90%_legal_topic_authority"
+          
+        indonesian_context:
+          cultural_sensitivity: "balance_legal_authority_with_accessibility"
+          trust_building: "avoid_intimidating_legal_jargon_overuse"
+      
+      business_finance_topics:
+        detection_keywords:
+          - "financial_data_analysis"
+          - "business_strategy_discussion"
+          - "economic_trends_explanation"
+          - "investment_advice_elements"
+          - "bisnis_keuangan_investasi"
+          - "ekonomi_pasar_modal"
+        
+        authority_requirements:
+          primary_recommendation: "business_executive_persona"
+          secondary_options: ["financial_advisor", "entrepreneur", "economist"]
+          credibility_boost: "+80%_business_topic_authority"
+          
+        indonesian_context:
+          cultural_sensitivity: "represent_indonesian_business_success_story"
+          trust_building: "balance_success_with_relatability"
+      
+      technology_innovation_topics:
+        detection_keywords:
+          - "technical_specifications_discussed"
+          - "innovation_trends_analyzed"
+          - "digital_transformation_topics"
+          - "future_technology_predictions"
+          - "teknologi_digital_inovasi"
+          - "gadget_aplikasi_software"
+        
+        authority_requirements:
+          primary_recommendation: "tech_expert_persona"
+          secondary_options: ["innovation_consultant", "digital_strategist", "startup_founder"]
+          credibility_boost: "+85%_technology_topic_authority"
+          
+        indonesian_context:
+          cultural_sensitivity: "represent_indonesian_tech_innovation_leadership"
+          trust_building: "balance_tech_expertise_with_practical_application"
+      
+      social_cultural_topics:
+        detection_keywords:
+          - "cultural_analysis_present"
+          - "social_trends_discussion"
+          - "demographic_insights_shared"
+          - "behavioral_patterns_analyzed"
+          - "budaya_sosial_masyarakat"
+          - "generasi_tren_perilaku"
+        
+        authority_requirements:
+          primary_recommendation: "social_commentator_persona"
+          secondary_options: ["cultural_analyst", "youth_advocate", "community_leader"]
+          credibility_boost: "+75%_social_topic_authority"
+          
+        indonesian_context:
+          cultural_sensitivity: "authentic_indonesian_cultural_representation"
+          trust_building: "genuine_community_connection_not_outsider_observation"
+
+# ===== VISUAL AUTHORITY ENHANCEMENT SYSTEM =====
+visual_authority_enhancement_system:
+  costume_recommendation_database:
+    medical_professional_setup:
+      primary_costume: "white_medical_coat_with_stethoscope"
+      alternative_options:
+        casual_medical: "scrubs_with_medical_badge_and_clipboard"
+        educational_medical: "professional_attire_with_medical_props"
+        modern_medical: "contemporary_doctor_outfit_with_tech"
+      
+      essential_props: ["stethoscope", "medical_clipboard", "health_certificates", "medical_books"]
+      visual_setup_guidance: ["clean_clinical_background", "medical_office_setting", "health_facility_environment"]
+      
+      user_implementation_guide:
+        costume_tips: "Pastikan jas dokter terlihat rapi dan profesional, stethoscope di leher untuk instant credibility"
+        prop_interaction: "Sesekali pegang clipboard atau tunjuk ke chart kesehatan"
+        background_setup: "Gunakan background putih bersih atau setting medical office"
+        
+      indonesian_cultural_adaptation:
+        respect_hierarchy: "Maintain professional medical respect without intimidation"
+        accessibility: "Balance authority with approachable bedside manner"
+        generational_acceptance: "Ensure relatability to younger audience"
+    
+    legal_professional_setup:
+      primary_costume: "formal_business_suit_with_legal_accessories"
+      alternative_options:
+        casual_legal: "smart_casual_blazer_with_law_books"
+        academic_legal: "professor_style_with_legal_references"
+        modern_legal: "contemporary_lawyer_look_with_digital_tools"
+      
+      essential_props: ["law_books", "legal_documents", "justice_scales_symbol", "briefcase"]
+      visual_setup_guidance: ["law_office_environment", "library_with_legal_books", "courtroom_inspired_backdrop"]
+      
+      user_implementation_guide:
+        costume_tips: "Formal suit memberikan instant authority, pastikan terlihat professional tapi tidak kaku"
+        prop_interaction: "Pegang dokumen legal atau tunjuk ke law books untuk emphasis"
+        background_setup: "Library dengan buku hukum atau office setting dengan sertifikat"
+        
+      indonesian_cultural_adaptation:
+        authority_balance: "Professional without appearing elitist or disconnected"
+        cultural_sensitivity: "Respect Indonesian legal traditions and hierarchy"
+        youth_connection: "Maintain bridge to younger generation concerns"
+    
+    business_executive_setup:
+      primary_costume: "modern_executive_business_attire"
+      alternative_options:
+        startup_executive: "smart_casual_entrepreneur_style"
+        consultant_style: "professional_advisor_appearance"
+        corporate_leader: "high_level_executive_formal_wear"
+      
+      essential_props: ["laptop", "business_documents", "financial_charts", "executive_accessories"]
+      visual_setup_guidance: ["modern_office_environment", "boardroom_setting", "business_conference_backdrop"]
+      
+      user_implementation_guide:
+        costume_tips: "Executive attire shows success and competence, pilih yang sesuai dengan target audience"
+        prop_interaction: "Gunakan laptop atau business charts untuk support points"
+        background_setup: "Modern office atau co-working space yang represent success"
+        
+      indonesian_cultural_adaptation:
+        success_representation: "Aspirational without appearing disconnected from audience reality"
+        entrepreneurial_spirit: "Reflect Indonesian business innovation and growth"
+        generational_relevance: "Modern business leadership that resonates with Gen Z"
+    
+    tech_expert_setup:
+      primary_costume: "modern_tech_professional_casual"
+      alternative_options:
+        casual_tech: "hoodie_and_jeans_with_premium_tech_accessories"
+        corporate_tech: "business_casual_with_high_tech_elements"
+        startup_tech: "innovative_entrepreneur_tech_style"
+      
+      essential_props: ["latest_gadgets", "multiple_monitors", "tech_innovation_symbols", "coding_setup"]
+      visual_setup_guidance: ["high_tech_office", "innovation_lab_setting", "modern_tech_workspace"]
+      
+      user_implementation_guide:
+        costume_tips: "Tech casual yang tetap professional, tunjukkan up-to-date dengan teknologi"
+        prop_interaction: "Demo gadgets atau tunjuk ke tech setup untuk credibility"
+        background_setup: "Setup dengan multiple monitors atau tech gadgets visible"
+        
+      indonesian_cultural_adaptation:
+        innovation_leadership: "Represent Indonesian position in global tech advancement"
+        accessibility: "Tech expertise without intimidation or condescension"
+        future_focus: "Forward-thinking leadership that inspires youth"
+    
+    social_commentator_setup:
+      primary_costume: "approachable_casual_professional_style"
+      alternative_options:
+        youth_advocate: "trendy_casual_with_generational_elements"
+        academic_social: "intellectual_casual_with_research_materials"
+        community_leader: "respected_elder_sibling_appearance"
+      
+      essential_props: ["cultural_artifacts", "social_research_materials", "community_symbols", "books"]
+      visual_setup_guidance: ["comfortable_social_space", "cultural_backdrop", "community_environment"]
+      
+      user_implementation_guide:
+        costume_tips: "Casual professional yang relatable, hindari terlalu formal atau terlalu casual"
+        prop_interaction: "Gunakan cultural props atau community symbols untuk connection"
+        background_setup: "Setting yang warm dan approachable, reflect Indonesian culture"
+        
+      indonesian_cultural_adaptation:
+        cultural_authenticity: "Genuine Indonesian cultural representation without stereotyping"
+        generational_voice: "Authentic Gen Z spokesperson without trying too hard"
+        social_connection: "Community-integrated perspective, not outsider observer"
+
+# ===== RECOMMENDATION LOGIC SYSTEM =====
+recommendation_logic_system:
+  automatic_analysis_engine:
+    content_analysis: "Analyze research results and content topic for authority requirements"
+    topic_complexity_assessment: "Evaluate content technical depth and expertise needed"
+    audience_trust_needs: "Determine credibility requirements for effective message delivery"
+    cultural_context_consideration: "Ensure Indonesian cultural appropriateness and relatability"
+  
+  confidence_scoring_system:
+    recommendation_confidence: "Rate recommendation accuracy and effectiveness 0 to 100"
+    alternative_option_ranking: "Provide ranked secondary and tertiary persona choices"
+    cultural_sensitivity_score: "Verify Indonesian cultural appropriateness and acceptance"
+    authority_effectiveness_prediction: "Estimate audience trust building and credibility impact"
+  
+  user_interaction_protocol:
+    recommendation_presentation_format:
+      structured_recommendation: |
+        🎭 **REKOMENDASI CREATOR PERSONA UNTUK KONTEN INI**
+        
+        **📊 ANALISIS TOPIK:**
+        • Kategori: {topic_category}
+        • Level Kompleksitas: {complexity_level}
+        • Authority Required: {authority_level_needed}
+        • Indonesian Context: {cultural_relevance}
+        
+        **🥇 REKOMENDASI UTAMA:**
+        👤 Creator Persona: {primary_persona}
+        👔 Setup Kostum: {primary_costume_description}
+        🎬 Visual Setting: {primary_setting_guidance}
+        💪 Authority Boost: {credibility_boost_percentage}
+        📝 Implementation Tips: {practical_setup_guidance}
+        
+        **🥈 ALTERNATIF LAIN:**
+        • Opsi 2: {secondary_persona} - {secondary_setup}
+        • Opsi 3: {tertiary_persona} - {tertiary_setup}
+        
+        **💡 ALASAN REKOMENDASI:**
+        {detailed_recommendation_explanation}
+        
+        **🎯 SARAN ARAH SCRIPT:**
+        • Pendekatan 1: {direction_suggestion_1}
+        • Pendekatan 2: {direction_suggestion_2}
+        • Pendekatan 3: {direction_suggestion_3}
+        
+        **📋 PILIHAN RESPON:**
+        1. "Terima rekomendasi" - Gunakan setup utama
+        2. "Pilih alternatif [2/3]" - Gunakan opsi alternatif
+        3. "Custom: [setup anda]" - Jelaskan setup yang diinginkan
+        4. "Lanjut" - Biarkan sistem tentukan semua secara otomatis
+    
+    response_handling_logic:
+      accept_primary: "PROCEED_WITH_PRIMARY_RECOMMENDATION"
+      choose_alternative: "APPLY_SELECTED_ALTERNATIVE_OPTION"
+      custom_input: "PROCESS_USER_CUSTOM_PERSONA_AND_DIRECTION"
+      system_auto: "FULL_SYSTEM_CREATIVE_CONTROL_MODE"
+
+# ===== SCRIPT DIRECTION ADVISORY SYSTEM =====
+script_direction_advisory_system:
+  direction_strategy_categories:
+    educational_authority_approach:
+      content_style: "Inform and educate with expert credibility and clear explanations"
+      tone_recommendation: "Authoritative but accessible, avoid intimidating jargon"
+      structure_suggestion: "Problem identification → Expert explanation → Practical solution"
+      cta_direction: "Learn more, apply knowledge, consult with experts"
+      
+      implementation_guidance: "Gunakan terminology yang tepat tapi dijelaskan dengan bahasa sederhana"
+    
+    investigative_revelation_approach:
+      content_style: "Uncover hidden truths and expose misconceptions with authority"
+      tone_recommendation: "Curious and revealing with expert backing"
+      structure_suggestion: "Mystery setup → Investigation process → Expert revelation"
+      cta_direction: "Share findings, investigate further, verify claims with experts"
+      
+      implementation_guidance: "Build suspense tapi selalu back up dengan expert evidence"
+    
+    opinion_leadership_approach:
+      content_style: "Take strong authoritative stance on issues with expert backing"
+      tone_recommendation: "Confident and persuasive with demonstrated expertise"
+      structure_suggestion: "Clear position → Expert evidence → Authoritative call to action"
+      cta_direction: "Join movement, take action, follow expert guidance"
+      
+      implementation_guidance: "Show confidence tapi tetap humble dan respect audience intelligence"
+    
+    myth_busting_expert_approach:
+      content_style: "Challenge misconceptions with expert authority and clear evidence"
+      tone_recommendation: "Surprising but corrective with credible backing"
+      structure_suggestion: "Common myth → Expert facts → Truth revelation with evidence"
+      cta_direction: "Spread correct information, consult real experts, avoid misinformation"
+      
+      implementation_guidance: "Jangan condescending, focus pada education bukan embarrassment"
+    
+    trend_analysis_prediction:
+      content_style: "Analyze and predict trends with expert insight and data"
+      tone_recommendation: "Insightful and forward-thinking with authoritative analysis"
+      structure_suggestion: "Current state → Expert analysis → Future implications with guidance"
+      cta_direction: "Prepare for future, adapt strategy, follow expert recommendations"
+      
+      implementation_guidance: "Balance prediction dengan realistic expectations dan actionable advice"
+
+# ===== CREATOR DNA INTEGRATION =====
+creator_dna_integration:
+  persona_enhanced_fusion:
+    medical_authority_influence:
+      samuel_christ_enhancement: "Add medical empathy and healing focus to vulnerability"
+      jovial_da_lopez_moderation: "Reduce satirical edge, add educational humor"
+      gadgetin_boost: "Increase analytical precision and evidence-based approach"
+      
+    legal_authority_influence:
+      samuel_christ_adaptation: "Channel empathy into justice and rights advocacy"
+      jovial_da_lopez_enhancement: "Use satirical skills for legal system commentary"
+      gadgetin_boost: "Maximize analytical approach and logical argumentation"
+      
+    business_authority_influence:
+      samuel_christ_application: "Apply empathy to economic impact on people"
+      jovial_da_lopez_utilization: "Satirical take on business culture and trends"
+      gadgetin_enhancement: "Strong analytical approach to business data and strategy"
+      
+    tech_authority_influence:
+      samuel_christ_integration: "Humanize technology impact on personal growth"
+      jovial_da_lopez_application: "Satirical commentary on tech culture and trends"
+      gadgetin_amplification: "Full analytical tech expertise with practical focus"
+      
+    social_authority_influence:
+      samuel_christ_boost: "Enhanced empathy and community healing focus"
+      jovial_da_lopez_enhancement: "Maximum satirical cultural commentary skills"
+      gadgetin_contribution: "Analytical approach to social trends and data"
+
+# ===== CULTURAL SENSITIVITY PROTOCOLS =====
+cultural_sensitivity_protocols:
+  indonesian_context_validation:
+    professional_appropriateness:
+      clothing_standards: "Ensure costume choices respect Indonesian professional dress codes"
+      religious_sensitivity: "Consider Islamic dress principles and modesty standards"
+      generational_acceptance: "Balance authority with Gen Z relatability and accessibility"
+      economic_awareness: "Avoid displays of wealth that disconnect from audience reality"
+    
+    authority_representation_guidelines:
+      avoid_elitism: "Professional authority without appearing disconnected or superior"
+      maintain_humility: "Confidence balanced with Indonesian cultural humility values"
+      cultural_bridge: "Connect professional expertise with traditional Indonesian respect"
+      youth_engagement: "Authority that inspires rather than intimidates younger audience"
+  
+  recommendation_cultural_filter:
+    prevent_stereotyping: "Avoid western professional stereotypes inappropriate for Indonesia"
+    ensure_local_relevance: "Personas must resonate with Indonesian professional landscape"
+    generational_bridge_building: "Connect authority with youth culture authentically"
+    inclusive_representation: "Diverse Indonesian professional representation across regions"
+
+# ===== SYSTEM INTEGRATION POINTS =====
+system_integration:
+  input_processing_handoff:
+    from_research_engine: "Research results inform persona recommendation analysis"
+    topic_authority_mapping: "Content complexity determines authority level requirements"
+    cultural_context_integration: "Indonesian research context influences persona selection"
+  
+  style_fusion_enhancement:
+    persona_influenced_weights: "Recommended persona adjusts creator DNA fusion ratios"
+    authority_language_adaptation: "Persona choice influences script language and terminology"
+    cultural_authenticity_preservation: "Indonesian context maintained throughout fusion"
+  
+  script_generation_integration:
+    visual_direction_enhancement: "Persona setup guides visual direction descriptions"
+    authority_appropriate_language: "Script language adapts to chosen professional persona"
+    credibility_building_elements: "Persona-appropriate credibility markers integrated"
+  
+  user_experience_optimization:
+    recommendation_transparency: "Clear explanation of why specific persona recommended"
+    customization_flexibility: "User can override recommendations with custom choices"
+    implementation_guidance: "Practical tips for executing recommended persona setup"
+
+# ===== PERFORMANCE METRICS =====
+performance_metrics:
+  recommendation_accuracy: "User acceptance rate of persona recommendations"
+  authority_effectiveness: "Audience trust and credibility response to persona choices"
+  cultural_appropriateness: "Indonesian audience acceptance and cultural fit"
+  implementation_success: "User ability to execute recommended persona setups"
+  content_quality_impact: "Improvement in content authority and educational value"
+
+validation_tags:
+  - "creator_persona_recommendation_system_active"
+  - "topic_authority_analysis_complete"
+  - "visual_authority_enhancement_ready"
+  - "cultural_appropriateness_verified"
+  - "script_direction_advisory_available"
+  - "user_interaction_protocol_enabled"
+  - "indonesian_context_integration_complete"
+>>>>>>> origin/main
