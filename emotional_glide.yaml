@@ -1,13 +1,18 @@
 # emotional_glide.yaml
 # Purpose: Modulates subtle emotional transitions between narrative segments
 
-version: "3.7.0"
-compiled_for: "v3.7.0"
+version: "3.8.0"
+compiled_for: "v3.8.0"
 
 aliases:
   strong_valley: valley_to_climax
 
 glide_profiles:
+  shock: "burst→hold"
+  awe: "hold→glide"
+  curiosity: "explain→anchor"
+  melancholy: "drift→pause"
+  intrigue: "tease→punch"
   valley_to_climax:
     transition_type: "rising_tension"
     emotional_shift: ["doubt", "curiosity", "anticipation", "relief"]

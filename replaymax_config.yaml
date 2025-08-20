@@ -1,8 +1,8 @@
 # replaymax_config.yaml
 # Purpose: Explainable Replay Scoring + Strategic Variant Generator
 
-version: "3.7.0"
-compiled_for: "v3.7.0"
+version: "3.8.0"
+compiled_for: "v3.8.0"
 
 variant_generation_strategy:
   archetype_pool:

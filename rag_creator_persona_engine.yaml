@@ -4,9 +4,76 @@
 # Refactored from: rag_character_sheet.yaml (removed KlingAI dependencies)
 
 version: "3.8.0"
-pattern_ref_prefix: "!RAG_CREATOR_PERSONA"
-purpose: "Smart creator persona recommendation and visual authority enhancement for manual video production"
+exports:
+persona_signal: { type: enum, values: [medical, legal, business, technology, social] }
+visual_setup: { include: [costume, setting, props] }
+dna_bias_hint: { samuel_christ: float, jovial_da_lopez: float, gadgetin: float }
+lexicon_bundle:
+  type: object
+  fields: [slang, catchphrases, code_switch_rules, forbidden_list]
+    
+persona_to_dna_bias:
+medical: { samuel_christ: 0.55, jovial_da_lopez: 0.15, gadgetin: 0.30 }
+legal: { samuel_christ: 0.50, jovial_da_lopez: 0.35, gadgetin: 0.15 }
+business: { samuel_christ: 0.35, jovial_da_lopez: 0.15, gadgetin: 0.50 }
+technology:{ samuel_christ: 0.30, jovial_da_lopez: 0.10, gadgetin: 0.60 }
+social: { samuel_christ: 0.50, jovial_da_lopez: 0.40, gadgetin: 0.10 }
 
+lexicon:
+  samuel_christ:
+    slang:
+      - "cuan"
+      - "cashflow"
+      - "leverage"
+      - "naikin aset"
+    catchphrases:
+      - "Biar simple: {point_rasio_3}"
+      - "Ingat: aset kerja buat kamu, bukan sebaliknya."
+    code_switch_rules:
+      id_en_ratio: 0.15   # 15% istilah Inggris (ROI, asset, leverage)
+      formality: "mid"    # rapi tapi santai
+    forbidden_list:
+      - "flexing kasar"
+      - "janji kaya instan"
+  jovial_da_lopez:
+    slang:
+      - "satire mode on"
+      - "meta"
+      - "absurd tapi real"
+    catchphrases:
+      - "Kita bukan cuma nonton, kita ngaca."
+      - "Ironi yang kita telan tiap hari."
+    code_switch_rules:
+      id_en_ratio: 0.25
+      formality: "smart-casual"  # cerdas tapi tetap luwes
+    forbidden_list:
+      - "body shaming"
+      - "serangan pribadi"
+  gadgetin:
+    slang:
+      - "value for money"
+      - "speknya gini"
+      - "daily driver"
+    catchphrases:
+      - "Pertanyaannya: worth it nggak?"
+      - "Dipake harian, baterai aman?"
+    code_switch_rules:
+      id_en_ratio: 0.20
+      formality: "clear-neutral"
+    forbidden_list:
+      - "rekomendasi tanpa caveat"
+      - "nyebut brand kompetitor secara negatif"
+
+integration:
+  apply_to:
+    - style_engine.fusion_strategy # modulate tone & wording
+    - engagement.cta_engine        # pilih CTA yang match persona tone
+    - emotional_glide.reflection  # gaya refleksi di VALLEY
+  precedence:
+    - persona_signal
+    - dna_bias_hint
+    - lexicon
+    
 # ===== SMART CREATOR RECOMMENDATION ENGINE =====
 smart_creator_recommendation_engine:
   module_id: "intelligent_creator_advisor"

@@ -12,7 +12,7 @@ compiled_from:
 module_registration:
   id: "runtime_safeguard"
   role: "prevention_engine"
-  activated_by: ["hallucination_block", "klingai_prompt_validator", "flush_protocol"]
+  activated_by: ["hallucination_block", "flush_protocol"]
 
 registered_modules:
   - originality_guard
@@ -54,7 +54,8 @@ enhanced_fact_verification:
   enabled: true
   priority: "CRITICAL_FIRST_STAGE"
   activation_trigger: "any_input_received"
-  
+legacy_fact_filters:
+  enabled: false
   input_processing:
     supported_formats:
       - "article_url_link"

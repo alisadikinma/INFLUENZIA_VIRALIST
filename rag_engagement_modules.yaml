@@ -1,13 +1,13 @@
 # RAG Engagement Modules Configuration
-# Version: v3.7.0
+# Version: v3.8.0
 # Converted from: RAG_ENGAGEMENT_MODULES.md
 # Purpose: Runtime engagement optimization and replay logic
 
-version: "3.7.0"
+version: "3.8.0"
 pattern_ref_prefix: "!RAG_ENGAGEMENT_MODULES"
 compiled_from:
-  - "Content Strategy Framework v3.7.0"
-  - "Script Format Blueprint v3.7.0"
+  - "Content Strategy Framework v3.8.0"
+  - "Script Format Blueprint v3.8.0"
 
 # ===== REPLAY LOGIC =====
 replay_logic:
@@ -195,6 +195,21 @@ replay_logic:
 
 # ===== CTA ENGINE =====
 cta_engine:
+mode: auto # normal/aggressive selected by flags
+decision_logic:
+    - if: viral_mode == true
+    profile: aggressive
+    - elif: persona_signal in [medical, legal]
+    profile: authority
+    - else:
+    profile: community
+profiles:
+  community:
+    patterns: ["ajak komentar", "share pengalaman", "tag temen"]
+  authority:
+    patterns: ["ikuti langkah", "cek sumber/tautan resmi", "save untuk referensi"]
+  aggressive:
+    patterns: ["follow biar nggak ketinggalan part 2", "duet sekarang", "drop pendapat panasmu"]
   core_principles:
     community_onboarding_system:
       activation_trigger: "content_addressing_serious_issues_mental_health_ai_ethics"
