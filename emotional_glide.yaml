@@ -11,12 +11,13 @@ glide_profiles:
   default_valley:
     phases: ["burst","hold","glide"]
     valley_window: "30s–45s"
-  shock:     { pattern: "burst→hold" }
-  awe:       { pattern: "hold→glide" }
-  curiosity: { pattern: "explain→anchor" }
-  melancholy:{ pattern: "drift→pause" }
-  intrigue:  { pattern: "tease→punch" }
-
+  shock:      { pattern: "burst→hold" }
+  awe:        { pattern: "hold→glide" }
+  curiosity:  { pattern: "explain→anchor" }
+  melancholy: { pattern: "drift→pause" }
+  intrigue:   { pattern: "tease→punch" }
+  valley_to_climax: { pattern: "valley→rise→climax" }
+    
 modulation_rules:
   intensity_modulation:
     based_on:

@@ -5,14 +5,15 @@
 
 version: "3.8.0"
 exports:
-persona_signal: { type: enum, values: [medical, legal, business, technology, social] }
-visual_setup: { include: [costume, setting, props] }
-dna_bias_hint: { samuel_christ: float, jovial_da_lopez: float, gadgetin: float }
-lexicon_bundle:
-  samuel_christ:
-    slang: ["bro", "gais", "literally"]
-    catchphrases: ["Gini ya sobat..."]
-    code_switch_ratio: 0.15
+  persona_signal: { type: enum, values: [medical, legal, business, technology, social, custom], required: true }
+  visual_setup: { type: text, required: true }
+  dna_bias_hint: { type: object, keys: [samuel_christ, jovial_da_lopez, gadgetin], required: true }
+
+  lexicon_bundle:
+    samuel_christ:
+      slang: ["bro", "gais", "literally"]
+      catchphrases: ["Gini ya sobat..."]
+      code_switch_ratio: 0.15
    
 # rag_creator_persona_engine.yaml
 persona_signal_map:
