@@ -49,10 +49,12 @@ ruleset:
 # INSERT THIS ENTIRE SECTION:
 
 enhanced_fact_verification:
-  module_id: "enhanced_fact_checker"
   enabled: true
-  priority: "CRITICAL_FIRST_STAGE"
-  activation_trigger: "any_input_received"
+  min_confidence: 0.85
+  on_hoax: "halt_and_educate"
+  on_uncertain: "proceed_with_disclaimer"
+  sources_required: 3
+
 legacy_fact_filters:
   enabled: false
   input_processing:
@@ -332,11 +334,11 @@ legacy_fact_filters:
 
 # ===== STEP 2: UPDATE existing fact_check_filter section =====
 
-fact_check_filter:
-  module_id: "legacy_fact_check_filter"
-  enabled: false  # Disabled in favor of enhanced_fact_verification
-  deprecated: "replaced_by_enhanced_fact_verification"
-  function: "legacy_basic_fact_checking_replaced"
+# fact_check_filter:
+#  module_id: "legacy_fact_check_filter"
+#  enabled: false  # Disabled in favor of enhanced_fact_verification
+#  deprecated: "replaced_by_enhanced_fact_verification"
+#  function: "legacy_basic_fact_checking_replaced"
 
 # ===== STEP 3: ADD integration section at end of file =====
 # ADD BEFORE the last line:
@@ -367,31 +369,59 @@ TOPIC_VALIDATOR:
   log_action: true
 
 fallback_override_handler:
-  rule:
-    - override_trigger: ["emotion_flat", "style_clash", "logic_loop"]
-    - priority: ["style_fusion_driver", "emotional_arc_engine"]
+  # Keep it simple and actionable; map trigger -> action
+  triggers:
+    structure_violation: regenerate_once          # format or language issues from enforcer
+    emotion_flat: boost_emotion_glide             # nudge the glide profile
+    style_clash: recompute_style_weights          # re-resolve style via fusion strategy
+    low_confidence: add_disclaimer                # keep the fact, add qualifier
+    hallucination: educational_correction         # replace with grounded explanation
+  # If multiple triggers fire, apply in this order
+  priority_order: ["structure_violation", "hallucination", "low_confidence", "style_clash", "emotion_flat"]
 
 originality_guard:
   module_id: "originality_guard"
   enabled: true
-  function: "Mendeteksi dan mengurangi potensi plagiarisme atau pengulangan ide"
-  strategies:
-    - check_redundant_phrases
-    - compare_against_internal_script_history
-    - limit_template_overuse
+  # 0.70–0.85 is typical; 0.75 is a good default
+  similarity_threshold: 0.75
+
+  checks:
+    # Batasi kemiripan kalimat/kalimat pola (lebih deterministik daripada “limit_template_overuse”)
+    - ngram_overlap: { n: 5, max_ratio: 0.22 }         # ≤22% 5-gram reuse vs. corpus internal
+    - phrase_reuse_limit: { max_reused_phrases: 2 }     # frasa khas yang sama ≤ 2 kali
+
+    # Bandingkan terhadap histori internal (skrip/varian terakhir)
+    - internal_history_compare: { window: 50 }          # cek 50 output terakhir (atau sesuai log Anda)
+
+  outputs:
+    - originality_score   # ekspos skor untuk dipakai QA ringan (opsional)
+
+  on_violation:
+    action: regenerate_with_variation
+    constraints:
+      - preserve_verified_facts
+      - keep_structure_but_change_wording_examples_angles
+      - vary_hook_angle_or_cta_wording
+    max_attempts: 1
    
 structure_language_enforcer:
   enabled: true
-  # Ganti daftar field teknis → emoji markers yang dipakai CINEGENIX
-  enforce_fields: ["Title", "⏱️", "🎥", "🎙️", "😲", "🎬"]
-  allow_script_lang: ["id"]
-  # Opsional: peta interpretasi untuk downstream tools
+  enforce_cinegenix_format: true     # hard gate on the template
+  forbid_yaml_output: true           # never output YAML in the final result
+  allow_script_lang: ["ID"]          # force Indonesian; use uppercase to match system prompt
+  # Validate presence and order of emoji markers used by CINEGENIX
+  require_fields_in_order: ["Title", "⏱️", "🎥", "🎙️", "😲", "🎬"]
+  # Optional: microblock ID must exist and be formatted
+  microblock_id_regex: "\\*ID:[^*]+\\*"   # ensures *ID:{microblock_id}* appears
+  # Helpful mapping for downstream tools; keep it (it’s lightweight and practical)
   map_emoji_to_fields:
     "⏱️": "timestamp_range"
     "🎥": "visual_direction"
     "🎙️": "script"
     "😲": "emotional_label"
     "🎬": "scene_transition"
+  # What to do when format/language checks fail
+  on_violation: regenerate_once
 
 validator_yaml_bridge:
   enforce_output_structure_language: true
