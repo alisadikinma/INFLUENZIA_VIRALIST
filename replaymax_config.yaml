@@ -1,8 +1,8 @@
 # replaymax_config.yaml
 # Purpose: Explainable Replay Scoring + Strategic Variant Generator
 
-version: "3.8.0"
-compiled_for: "v3.8.0"
+version: "3.8.1"
+compiled_for: "v3.8.1"
 
 variant_generation_strategy:
   archetype_pool:
@@ -39,9 +39,9 @@ rationale_formatting:
 
 replay_trigger_conditions:
   when_to_activate:
-    - "viewer retention drops after segment_2"
-    - "emotional pacing flat across middle arc"
-    - "thumbnail mismatch detected with CTA"
+    - "perceived_retention_drop_mid_arc"            # heuristik dari naskah/struktur
+    - "affect_flatness_in_middle_arc"               # emosi datar di tengah
+    - "thumbnail_title_semantic_mismatch_heuristic" # deteksi semantik, bukan data CTR
   override_logic:
     - "prioritize_variant_with_higher_novelty"
     - "adjust CTA position to align with hook intensity"

@@ -1,9 +1,9 @@
 # RAG Creator Persona Engine Configuration
-# Version: v3.8.0
+# Version: v3.8.1
 # Purpose: Smart creator persona recommendation and visual authority enhancement
 # Refactored from: rag_character_sheet.yaml (removed KlingAI dependencies)
 
-version: "3.8.0"
+version: "3.8.1"
 exports:
   code_switch_ratio:
     samuel_christ: ${lexicon.samuel_christ.code_switch_rules.id_en_ratio}
@@ -13,6 +13,12 @@ exports:
   persona_signal: { type: enum, values: [medical, legal, business, technology, social, custom], required: true }
   visual_setup: { type: text, required: true }
   dna_bias_hint: { type: object, keys: [samuel_christ, jovial_da_lopez, gadgetin], required: true }
+   
+authority_props_presets:
+  medical: ["white_coat", "stethoscope", "lab_notebook"]
+  business: ["blazer", "simple_chart_background"]
+  technology: ["laptop_open", "schematic_board_bg"]
+  social: ["casual_clean_outfit", "cozy_chair_bg"]
    
 # rag_creator_persona_engine.yaml
 persona_signal_map:

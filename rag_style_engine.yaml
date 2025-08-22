@@ -1,7 +1,14 @@
 # style_engine.yaml
 # Persona Fusion Profile for INFLUENZIA
 
-version: "3.8.0"
+version: "3.8.1"
+
+style_contracts:
+  allow_override: false
+  consumers:
+    - hook_generator
+    - cta_engine
+    - narrative_consistency_enforcer
 
 fusion_strategy:
   inputs: [persona_fusion_bridge, topic_style_advisor]

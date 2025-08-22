@@ -1,9 +1,9 @@
 # RAG Runtime Safeguard Configuration
-# Version: 3.8.0
+# Version: 3.8.1
 # Converted from: RAG_RUNTIME_SAFEGUARD.md
 # Purpose: Runtime safety validation and cultural protection protocols
 
-version: "3.8.0"
+version: "3.8.1"
 pattern_ref_prefix: "!RAG_RUNTIME_SAFEGUARD"
 compiled_from:
   - "Legacy safeguard protocols"
@@ -50,287 +50,11 @@ ruleset:
 
 enhanced_fact_verification:
   enabled: true
-  min_confidence: 0.85
-  on_hoax: "halt_and_educate"
+  on_hoax: "fallback_override_handler"
   on_uncertain: "proceed_with_disclaimer"
-  sources_required: 3
-
-legacy_fact_filters:
-  enabled: false
-  input_processing:
-    supported_formats:
-      - "article_url_link"
-      - "article_transcription_text"
-      - "article_title_only"
-      - "image_with_text_ocr"
-      - "social_media_screenshot"
-      - "partial_quote_snippet"
-    
-    content_extraction:
-      key_claims_identification: "extract_verifiable_statements"
-      factual_assertions: "identify_claims_requiring_verification"
-      source_attribution: "check_original_source_credibility"
-      publication_metadata: "analyze_date_author_publisher"
-
-  # ENHANCED GLOBAL FACT VERIFICATION SOURCES
-  # Focus: International Technology, Business, Science Coverage
-  
-  verification_sources:
-    tier_1_global_tech:
-      authoritative_tech_media:
-        - "techcrunch.com"
-        - "theverge.com" 
-        - "wired.com"
-        - "arstechnica.com"
-        - "engadget.com"
-        - "zdnet.com"
-      
-      business_financial:
-        - "bloomberg.com"
-        - "reuters.com"
-        - "wsj.com"
-        - "ft.com"
-        - "forbes.com"
-        - "cnbc.com"
-      
-      scientific_research:
-        - "nature.com"
-        - "science.org"
-        - "ieee.org"
-        - "acm.org"
-        - "arxiv.org"
-    
-    tier_1_mainstream_global:
-      international_news:
-        - "bbc.com"
-        - "cnn.com"
-        - "theguardian.com"
-        - "washingtonpost.com"
-        - "nytimes.com"
-        - "ap.org"
-      
-      fact_checkers_global:
-        - "snopes.com"
-        - "factcheck.org"
-        - "politifact.com"
-        - "fullfact.org"
-        - "factcheckni.org"
-    
-    tier_2_specialized:
-      tech_industry_insider:
-        - "techreport.com"
-        - "anandtech.com"
-        - "tomshardware.com"
-        - "digitaltrends.com"
-        - "gizmodo.com"
-      
-      business_analysis:
-        - "mckinsey.com"
-        - "bcg.com"
-        - "pwc.com"
-        - "deloitte.com"
-      
-      government_official:
-        - "fda.gov"
-        - "sec.gov"
-        - "ftc.gov"
-        - "europa.eu"
-      
-      international_orgs:
-        - "who.int"
-        - "worldbank.org"
-        - "imf.org"
-        - "oecd.org"
-    
-    tier_3_indonesian_context:
-      # Tetap include Indonesian sources untuk local context
-      indonesian_mainstream:
-        - "kompas.com"
-        - "detik.com" 
-        - "tempo.co"
-        - "kontan.co.id"
-      
-      indonesian_tech:
-        - "dailysocial.id"
-        - "techinasia.com"
-        - "jakpat.net"
-      
-      indonesian_fact_check:
-        - "turnbackhoax.id"
-        - "cekfakta.tempo.co"
-  
-  # ENHANCED TOPIC-SPECIFIC SOURCE MAPPING
-  topic_source_prioritization:
-    technology_topics:
-      primary_sources: "tier_1_global_tech"
-      secondary_sources: "tier_1_mainstream_global" 
-      context_sources: "tier_3_indonesian_context"
-      
-      example_flow:
-        - "Verify tech claims dari TechCrunch, Verge, Wired"
-        - "Cross-check dengan Reuters, Bloomberg untuk business impact"
-        - "Add Indonesian context dari DailySocial, TechInAsia"
-    
-    business_finance_topics:
-      primary_sources: "tier_1_mainstream_global.business_financial"
-      secondary_sources: "tier_2_specialized.business_analysis"
-      context_sources: "tier_3_indonesian_context"
-    
-    health_medical_topics:
-      primary_sources: "tier_1_global_tech.scientific_research + tier_2_specialized.government_official"
-      secondary_sources: "tier_1_mainstream_global"
-      context_sources: "indonesian_health_authority"
-    
-    social_cultural_topics:
-      primary_sources: "tier_1_mainstream_global"
-      secondary_sources: "tier_3_indonesian_context"
-      research_sources: "tier_2_specialized.business_analysis"
-  
-  # CREDIBILITY SCORING ADJUSTMENT
-  source_authority_weights:
-    # Global tech authorities get highest weight untuk tech topics
-    techcrunch_theverge_wired: 95
-    bloomberg_reuters_wsj: 92
-    nature_science_ieee: 98
-    bbc_guardian_ap: 90
-    
-    # Indonesian sources for context, not primary verification
-    kompas_detik_tempo: 75
-    dailysocial_techinasia: 70
-    
-    # Specialized sources
-    mckinsey_bcg_pwc: 85
-    government_official: 88
-    who_worldbank: 92
-  
-  verification_strategy_update:
-    for_tech_content:
-      step_1: "Verify core tech facts dari global tech authorities"
-      step_2: "Cross-reference business impact dari financial sources"  
-      step_3: "Add Indonesian market context dari local tech sources"
-      step_4: "Final fact-check dari international mainstream"
-    
-    confidence_threshold:
-      verified_true: "min_2_tier1_global_sources + 1_mainstream"
-      likely_true: "min_1_tier1_global + 1_tier2_specialized"
-      uncertain: "only_indonesian_sources_or_single_global"
-      
-  example_verification_flow:
-    input: "Apple akan rilis iPhone 16 dengan AI chip baru"
-    process:
-      - "Check TechCrunch, The Verge untuk official announcement"
-      - "Verify dari Apple official sources atau SEC filings"
-      - "Cross-check dengan Bloomberg untuk business implications"
-      - "Add context: availability di Indonesia dari DailySocial"
-    result: "Verified dengan confidence 90%+ dari multiple global sources"
-
-  hoax_detection_patterns:
-    linguistic_red_flags:
-      urgency_manipulation:
-        - "BREAKING.*tanpa_sumber"
-        - "URGENT.*forward_immediately"
-        - "SHARE_SEBELUM_DIHAPUS"
-      
-      emotional_manipulation:
-        - "SHOCKING.*doctors_hide_this"
-        - "government_doesn_want_you_to_know"
-        - "big_pharma_secret"
-      
-      conspiracy_indicators:
-        - "hidden_agenda.*elite"
-        - "mainstream_media_covers_up"
-        - "secret_research_reveals"
-    
-    structural_indicators:
-      credibility_markers_missing:
-        - "no_author_information"
-        - "no_publication_date"
-        - "suspicious_domain_patterns"
-        - "poor_grammar_spelling_indonesian"
-      
-      visual_hoax_patterns:
-        - "misleading_image_captions"
-        - "outdated_images_with_new_claims"
-        - "manipulated_screenshots"
-
-  verification_process:
-    stage_1_rapid_scan:
-      known_hoax_check: "search_against_hoax_databases"
-      source_authority_check: "evaluate_original_source_credibility"
-      pattern_recognition: "detect_common_hoax_linguistic_patterns"
-      timing_analysis: "verify_publication_date_consistency"
-    
-    stage_2_cross_verification:
-      multi_source_confirmation: "require_minimum_3_independent_sources"
-      expert_statement_search: "find_subject_matter_expert_opinions"
-      official_response_check: "search_government_institutional_statements"
-      contradiction_identification: "flag_conflicting_information_sources"
-    
-    stage_3_context_analysis:
-      historical_verification: "check_against_established_records"
-      scientific_plausibility: "evaluate_against_known_science"
-      logical_consistency: "assess_internal_claim_coherence"
-      bias_source_detection: "identify_potential_source_agenda"
-
-  verification_scoring:
-    confidence_scale: "0_to_100_verification_confidence"
-    
-    scoring_weights:
-      source_authority: 30
-      cross_source_agreement: 25
-      expert_consensus: 20
-      logical_consistency: 15
-      publication_quality: 10
-    
-    decision_thresholds:
-      verified_true: "confidence_above_85"
-      likely_true: "confidence_70_to_85"
-      uncertain: "confidence_40_to_70"
-      likely_false: "confidence_15_to_40"
-      verified_hoax: "confidence_below_15"
-
-  response_protocols:
-    verified_content_response:
-      action: "PROCEED_TO_NEXT_STAGE"
-      flag: "CONTENT_VERIFIED"
-      user_message: |
-        ✅ **KONTEN TERVERIFIKASI**
-        
-        Informasi telah diverifikasi dari multiple sumber terpercaya.
-        Confidence Score: {confidence_score}/100
-        
-        Melanjutkan ke tahap penelitian mendalam...
-    
-    uncertain_content_response:
-      action: "PROCEED_WITH_DISCLAIMER"
-      flag: "CONTENT_UNCERTAIN"
-      user_message: |
-        ⚠️ **INFORMASI BELUM DAPAT DIVERIFIKASI SEPENUHNYA**
-        
-        Confidence Score: {confidence_score}/100
-        
-        Script akan dibuat dengan disclaimer yang sesuai.
-        Sumber yang ditemukan: {partial_sources}
-    
-    hoax_detected_response:
-      action: "HALT_PRODUCTION_EDUCATE_USER"
-      flag: "CONTENT_HOAX"
-      user_message: |
-        🚫 **PERINGATAN: HOAX/MISINFORMASI TERDETEKSI**
-        
-        Konten yang Anda berikan teridentifikasi sebagai informasi yang tidak akurat.
-        
-        **Mengapa ini dianggap hoax:**
-        {hoax_explanation}
-        
-        **Informasi yang benar:**
-        {correct_information_summary}
-        
-        **Sumber terpercaya untuk topic ini:**
-        {reliable_source_suggestions}
-        
-        Saya tidak dapat membuat script berdasarkan informasi yang tidak akurat. 
-        Mari gunakan informasi yang sudah terverifikasi untuk script viral Anda.
+  outputs:
+    verification_status_with_confidence_score: "${status_label} (${confidence}/100)"
+    fact_verification_score: "${confidence}"
 
 # ===== STEP 2: UPDATE existing fact_check_filter section =====
 
@@ -371,33 +95,27 @@ TOPIC_VALIDATOR:
 fallback_override_handler:
   # Keep it simple and actionable; map trigger -> action
   triggers:
-    structure_violation: regenerate_once          # format or language issues from enforcer
-    emotion_flat: boost_emotion_glide             # nudge the glide profile
-    style_clash: recompute_style_weights          # re-resolve style via fusion strategy
-    low_confidence: add_disclaimer                # keep the fact, add qualifier
-    hallucination: educational_correction         # replace with grounded explanation
+    structure_violation: regenerate_once # format / language issues from enforcer
+    emotion_flat: boost_emotion_glide    # nudge the glide profile
+    style_clash: recompute_style_weights # re-resolve style via fusion strategy
+    low_confidence: add_disclaimer       # keep the fact, add qualifier
+    hallucination: educational_correction  # replace with grounded explanation
   # If multiple triggers fire, apply in this order
   priority_order: ["structure_violation", "hallucination", "low_confidence", "style_clash", "emotion_flat"]
 
 originality_guard:
-  module_id: "originality_guard"
   enabled: true
-  # 0.70–0.85 is typical; 0.75 is a good default
   similarity_threshold: 0.75
-
+  on_trigger: "auto_regenerate_with_variation"
+  
   checks:
-    # Batasi kemiripan kalimat/kalimat pola (lebih deterministik daripada “limit_template_overuse”)
-    - ngram_overlap: { n: 5, max_ratio: 0.22 }         # ≤22% 5-gram reuse vs. corpus internal
-    - phrase_reuse_limit: { max_reused_phrases: 2 }     # frasa khas yang sama ≤ 2 kali
-
-    # Bandingkan terhadap histori internal (skrip/varian terakhir)
-    - internal_history_compare: { window: 50 }          # cek 50 output terakhir (atau sesuai log Anda)
-
+    - ngram_overlap: { n: 5, max_ratio: 0.22 }      # ≤22% 5-gram reuse
+    - phrase_reuse_limit: { max_reused_phrases: 2 } # frasa khas sama ≤2x
+    - internal_history_compare: { window: 50 }  # bandingkan 50 output terakhir
   outputs:
-    - originality_score   # ekspos skor untuk dipakai QA ringan (opsional)
-
-  on_violation:
-    action: regenerate_with_variation
+    originality_score: "${originality_score}"    # diekspos untuk QA ringan
+  on_trigger: "auto_regenerate_with_variation" # konsisten penamaan runtime
+  regenerate_policy:
     constraints:
       - preserve_verified_facts
       - keep_structure_but_change_wording_examples_angles

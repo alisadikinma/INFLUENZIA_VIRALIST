@@ -1,13 +1,13 @@
 # RAG Engagement Modules Configuration
-# Version: v3.8.0
+# Version: v3.8.1
 # Converted from: RAG_ENGAGEMENT_MODULES.md
 # Purpose: Runtime engagement optimization and replay logic
 
-version: "3.8.0"
+version: "3.8.1"
 pattern_ref_prefix: "!RAG_ENGAGEMENT_MODULES"
 compiled_from:
-  - "Content Strategy Framework v3.8.0"
-  - "Script Format Blueprint v3.8.0"
+  - "Content Strategy Framework v3.8.1"
+  - "Script Format Blueprint v3.8.1"
 
 # ===== REPLAY LOGIC =====
 replay_logic:
@@ -454,10 +454,14 @@ viral_policy:
 
   # Aturan switching; dinilai kualitatif dari riset/topik/metric runtime.
   switch_rules:
+    limits:
+      aggressive_mode:
+        max_segments: 1
+        require_guardrail_pass: true
     trigger_aggressive_if:
       - "topic_controversy_score >= 0.6"
       - "replay_potential >= 0.7"
-      - "trend_velocity = high"
+      - "content_novelty_score >= 0.7"          # proxy dari originality_guard
       - "persona_authority = high AND audience_sentiment in [curious, polarized]"
     guardrails_block_aggressive_if:
       - "fact_confidence < 0.85"
@@ -468,6 +472,7 @@ viral_policy:
       - "evaluate guardrails first; if any true -> set active_mode = normal"
       - "else if any trigger_aggressive_if true -> set active_mode = aggressive"
       - "else active_mode = normal"
+
 
   # Perilaku per mode—dikonsumsi modul downstream.
   modes:
@@ -493,123 +498,31 @@ viral_policy:
     # Bendera sederhana untuk modul yang cek flag
     viral_mode: "${active_mode == 'aggressive'}"
 
+# ===== SYNC VALIDATION (Lean QA across script/visual/CTA) =====
+sync_validation_system:
+  enabled: true
+  checks:
+    - cross_segment_consistency     # hook → body → CTA konsisten
+    - persona_alignment             # sesuai DNA persona & style_weights (consume-only)
+    - safeguard_policy_match        # hormati runtime_safeguard flags (fact/disclaimer)
+  on_violation:
+    action: regenerate_once
+    with_constraints:
+      - preserve_fact_integrity
+      - maintain_emotion_flow
+      - keep_persona_voice
+  emit_tags:
+    - "cinegenix_format_validated"
+    - "cta_alignment_verified"
+    - "style_fusion_coherence"
+
 # ===== PATCH v3.6.5: THUMBNAIL VS VIDEO CTA SYNC =====
 cta_thumbnail_sync:
   enforce_tone_match: true
-  thumbnail_tone: inherit_from_video
-  mismatch_flag_trigger: "soft block"
-  sync_strategy: "caption + emotion alignment"
-  
-  # Enhanced Synchronization System
-  tone_matching_framework:
-    video_tone_extraction:
-      emotional_baseline: "extract_primary_emotional_tone_from_video_content"
-      energy_level: "measure_video_pacing_and_intensity"
-      creator_style: "identify_dominant_creator_personality_in_video"
-      cultural_context: "assess_indonesian_cultural_elements_present"
-    
-    thumbnail_tone_alignment:
-      facial_expression_sync: "match_thumbnail_expression_to_video_emotional_peak"
-      color_palette_harmony: "align_thumbnail_colors_with_video_mood"
-      text_overlay_consistency: "ensure_thumbnail_text_matches_video_messaging"
-      visual_energy_matching: "synchronize_thumbnail_dynamism_with_video_pace"
-  
-  mismatch_detection_system:
-    conflict_indicators:
-      emotional_discord: "thumbnail_emotion_contradicts_video_content"
-      energy_mismatch: "thumbnail_energy_level_inconsistent_with_video"
-      style_deviation: "thumbnail_style_conflicts_with_creator_brand"
-      cultural_inconsistency: "thumbnail_cultural_elements_misaligned"
-    
-    soft_block_implementation:
-      detection_threshold: "moderate_mismatch_confidence_level"
-      warning_system: "flag_potential_conflicts_for_review"
-      auto_correction: "suggest_thumbnail_adjustments_for_alignment"
-      manual_override: "allow_creator_approval_for_intentional_mismatches"
-  
-  caption_emotion_alignment:
-    caption_analysis:
-      emotional_sentiment: "analyze_caption_emotional_tone"
-      call_to_action_type: "identify_cta_category_and_intensity"
-      cultural_markers: "detect_indonesian_cultural_references"
-      engagement_intent: "assess_desired_audience_response"
-    
-    alignment_strategies:
-      emotional_consistency: "ensure_caption_emotion_matches_thumbnail_and_video"
-      messaging_coherence: "align_caption_message_with_visual_content"
-      cultural_harmony: "synchronize_cultural_elements_across_all_components"
-      engagement_optimization: "optimize_caption_for_thumbnail_video_synergy"
-  
-  # Creator-Specific Sync Rules
-  creator_sync_profiles:
-    gadgetin_sync_rules:
-      thumbnail_requirements:
-        - "professional_tech_aesthetic_consistency"
-        - "analytical_expression_matching_video_tone"
-        - "clean_visual_design_reflecting_content_authority"
-      
-      caption_alignment:
-        - "technical_language_consistency"
-        - "educational_cta_matching_video_value"
-        - "data_driven_messaging_coherence"
-    
-    jovial_sync_rules:
-      thumbnail_requirements:
-        - "expressive_dynamic_energy_matching_video"
-        - "cultural_humor_elements_consistent_across_platforms"
-        - "satirical_tone_reflected_in_visual_design"
-      
-      caption_alignment:
-        - "humorous_language_pattern_consistency"
-        - "cultural_reference_alignment"
-        - "community_engagement_cta_matching_video_energy"
-    
-    samuel_sync_rules:
-      thumbnail_requirements:
-        - "warm_empathetic_visual_tone_matching_video"
-        - "authentic_vulnerable_expression_consistency"
-        - "personal_growth_aesthetic_alignment"
-      
-      caption_alignment:
-        - "empathetic_language_pattern_consistency"
-        - "inspirational_messaging_coherence"
-        - "community_support_cta_matching_video_healing_intent"
-  
-  # Quality Assurance Framework
-  sync_validation_system:
-    pre_publication_checks:
-      - "thumbnail_video_emotional_tone_alignment_verified"
-      - "caption_messaging_consistency_with_visual_content_confirmed"
-      - "creator_brand_voice_maintained_across_all_elements"
-      - "cultural_sensitivity_preserved_in_all_components"
-      - "engagement_optimization_potential_maximized"
-    
-    performance_monitoring:
-      sync_effectiveness_metrics:
-        - "click_through_rate_correlation_with_sync_quality"
-        - "engagement_rate_improvement_from_alignment"
-        - "audience_feedback_on_content_coherence"
-        - "creator_satisfaction_with_sync_system"
-    
-    continuous_improvement:
-      feedback_integration: "incorporate_creator_and_audience_feedback"
-      algorithm_optimization: "refine_sync_detection_and_correction"
-      cultural_adaptation: "enhance_indonesian_cultural_context_awareness"
-      platform_evolution: "adapt_to_changing_social_media_requirements"
-  
-  # Emergency Protocols
-  sync_failure_recovery:
-    critical_mismatch_detected:
-      immediate_action: "halt_publication_pending_manual_review"
-      notification_system: "alert_content_team_of_sync_failure"
-      fallback_options: "provide_safe_default_thumbnail_caption_combinations"
-      resolution_process: "guided_manual_correction_with_sync_recommendations"
-    
-    system_malfunction:
-      backup_validation: "secondary_sync_checking_system_activation"
-      manual_override: "creator_approval_bypass_for_urgent_content"
-      error_logging: "detailed_malfunction_reporting_for_system_improvement"
-      recovery_protocol: "systematic_restoration_of_sync_functionality"
+  rules:
+    - "Thumbnail expression ≈ video emotional peak"
+    - "Caption CTA tone == video tone (no bait-and-switch)"
+  on_mismatch: "soft_block_and_suggest_fix"
 
 # ADD TO rag_engagement_modules.yaml
 # INSERT AFTER: cta_thumbnail_sync section (around line ~580)  

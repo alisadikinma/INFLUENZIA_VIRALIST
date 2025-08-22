@@ -1,13 +1,16 @@
-version: "3.8.0"
+version: "3.8.1"
+
 required_files:
   - rag_core_modules.yaml
   - rag_style_engine.yaml
   - rag_engagement_modules.yaml
-  - rag_runtime_safeguard.yaml
   - rag_creator_persona_engine.yaml
+  - rag_runtime_safeguard.yaml
   - emotional_glide.yaml
   - replaymax_config.yaml
 must_exist:
   - rag_engagement_modules.yaml#viral_policy
   - rag_style_engine.yaml#fusion_strategy
-  - rag_core_modules.yaml#deep_research_engine
+  - rag_runtime_safeguard.yaml#originality_guard
+  - rag_core_modules.yaml#smart_search_query_builder
+  - rag_engagement_modules.yaml#parasocial_relationship_engine

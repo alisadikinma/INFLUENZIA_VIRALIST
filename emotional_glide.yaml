@@ -1,8 +1,8 @@
 # emotional_glide.yaml
 # Purpose: Modulates subtle emotional transitions between narrative segments
 
-version: "3.8.0"
-compiled_for: "v3.8.0"
+version: "3.8.1"
+compiled_for: "v3.8.1"
 
 aliases:
   strong_valley: valley_to_climax
@@ -21,7 +21,7 @@ glide_profiles:
 modulation_rules:
   intensity_modulation:
     based_on:
-      - "viewer_retention_data"
+      - "perceived_retention_cues"
       - "segment_emotion_score"
     action: "adjust_segment_pacing_and_music_cue"
   visual_transition_support:
