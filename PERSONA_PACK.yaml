@@ -1,0 +1,137 @@
+version: 3.9.0
+
+# Primary creator persona definitions
+personas:
+  samuel_christ: &samuel_christ
+    persona_signal: samuel_christ_creator
+    authority_props_presets:
+      comedy:
+      - microphone
+      - stage_backdrop
+      tech:
+      - smartphone
+      - headphones
+    lexicon:
+      catchphrases:
+      - gila banget
+      - ngakak banget
+      - keren abis
+      slang:
+      - gue
+      - elu
+      - kalian
+    code_switch_ratio:
+      indonesian: 0.7
+      english: 0.3
+    cultural_guardrails:
+    - avoid_personal_attacks
+    - maintain_empathetic_humor
+    - respect_religious_sentiments
+
+  jovial_da_lopez: &jovial_da_lopez
+    persona_signal: jovial_da_lopez_creator
+    authority_props_presets:
+      comedy:
+      - standup_mic
+      - casual_hat
+      commentary:
+      - notebook
+      - coffee_mug
+    lexicon:
+      catchphrases:
+      - kocak parah
+      - cuy seriusan
+      - ga nyangka
+      slang:
+      - bro
+      - gue
+      - kalian
+    code_switch_ratio:
+      indonesian: 0.6
+      english: 0.4
+    cultural_guardrails:
+    - avoid_political_extremes
+    - stay_lighthearted
+    - respect_cultural_diversity
+
+  gadgetin: &gadgetin
+    persona_signal: gadgetin_creator
+    authority_props_presets:
+      tech_review:
+      - smartphone
+      - laptop
+      - unboxing_table
+      education:
+      - spec_chart
+      - price_tags
+    lexicon:
+      catchphrases:
+      - review jujur
+      - gadget keren
+      - worth it ga sih?
+      slang:
+      - gue
+      - kalian
+    code_switch_ratio:
+      indonesian: 0.9
+      english: 0.1
+    cultural_guardrails:
+    - avoid_vendor_bias
+    - emphasize_objective_information
+    - maintain_humility
+
+  fallback_creator: &fallback_creator
+    persona_signal: default_gen_z_creator
+    authority_props_presets:
+      general:
+      - casual_outfit
+      - smartphone
+      business:
+      - blazer
+      - laptop
+      cooking:
+      - apron
+      - spatula
+    lexicon:
+      catchphrases:
+      - teman-teman
+      - yuk kita coba
+      - seru banget
+      slang:
+      - gue
+      - kalian
+      - dong
+    code_switch_ratio:
+      indonesian: 0.85
+      english: 0.15
+    cultural_guardrails:
+    - avoid_offensive_language
+    - respect_diverse_opinions
+    - maintain_positive_attitude
+
+# Smart creator recommendation engine now selects among the defined personas
+smart_creator_recommendation_engine:
+  profiles:
+    samuel_christ: *samuel_christ
+    jovial_da_lopez: *jovial_da_lopez
+    gadgetin: *gadgetin
+  fallback: *fallback_creator
+
+# Expose a unified persona fusion bridge for style fusion
+exports:
+  persona_fusion_bridge:
+    # Start from the fallback persona as base and allow override
+    <<: *fallback_creator
+    # Additional fields can be merged at runtime based on selected persona
+
+# System integration declarations
+system_integration:
+  consumers:
+    - STYLE_PACK.yaml#fusion_strategy
+    - ENGAGEMENT_PACK.yaml#cta_engine
+
+# Validation tags produced by this pack
+validation_tags:
+  - persona_consistency
+  - cultural_sensitivity
+  - code_switch_stability

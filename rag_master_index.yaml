@@ -1,16 +1,24 @@
-version: "3.8.1"
-
-required_files:
-  - rag_core_modules.yaml
-  - rag_style_engine.yaml
-  - rag_engagement_modules.yaml
-  - rag_creator_persona_engine.yaml
-  - rag_runtime_safeguard.yaml
-  - emotional_glide.yaml
-  - replaymax_config.yaml
-must_exist:
-  - rag_engagement_modules.yaml#viral_policy
-  - rag_style_engine.yaml#fusion_strategy
-  - rag_runtime_safeguard.yaml#originality_guard
-  - rag_core_modules.yaml#smart_search_query_builder
-  - rag_engagement_modules.yaml#parasocial_relationship_engine
+version: "3.9.0"
+packs:
+  core: CORE_PACK.yaml
+  style: STYLE_PACK.yaml
+  engagement: ENGAGEMENT_PACK.yaml
+  runtime_quality: RUNTIME_QUALITY.yaml
+  persona: PERSONA_PACK.yaml
+contracts:
+  style_weights: STYLE_PACK.yaml#fusion_strategy.exports
+  viral_policy: ENGAGEMENT_PACK.yaml#viral_policy
+  validators: RUNTIME_QUALITY.yaml#validators
+module_mapping:
+  hook_engine: CORE_PACK.yaml#hook_generator
+  microblock_engine: CORE_PACK.yaml#microblock
+  emotional_glide_engine: CORE_PACK.yaml#emotional_glide_engine
+  title_guidelines: ENGAGEMENT_PACK.yaml#title_guidelines
+  variant_manager: ENGAGEMENT_PACK.yaml#variant_manager
+  structure_language_enforcer: RUNTIME_QUALITY.yaml#structure_language_enforcer
+  fact_verification: RUNTIME_QUALITY.yaml#enhanced_fact_verification
+  originality_guard: RUNTIME_QUALITY.yaml#originality_guard
+  persona_engine: PERSONA_PACK.yaml#smart_creator_recommendation_engine
+  persona_fusion_bridge: PERSONA_PACK.yaml#exports.persona_fusion_bridge
+  style_fusion: STYLE_PACK.yaml#fusion_strategy
+  cta_engine: ENGAGEMENT_PACK.yaml#cta_engine  

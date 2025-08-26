@@ -1,0 +1,152 @@
+version: 3.9.0
+creator_styles:
+  # Define stylistic DNA for each supported creator persona. These profiles enable
+  # authentic tone replication when blending with topic-specific advice.
+  samuel_christ:
+    tone: high_energy_comedy
+    pacing: rapid_fire
+    lexical_guidance:
+      emoji_use: light
+      rhetorical_question_frequency: high
+      humor_density: high
+  jovial_da_lopez:
+    tone: satirical_wry
+    pacing: conversational
+    lexical_guidance:
+      code_switching: moderate
+      sarcasm_level: medium
+      humor_density: medium
+  gadgetin:
+    tone: informative_techy
+    pacing: steady_explanation
+    lexical_guidance:
+      technical_terms_emphasis: high
+      slang_usage: low
+      objectivity_bias: strong
+  fallback_creator:
+    tone: neutral_conversational
+    pacing: balanced
+    lexical_guidance:
+      slang_usage: moderate
+      humor_density: low
+      empathy_signal: medium
+style_contracts:
+  allow_override: false
+  consumers:
+  - hook_generator
+  - cta_engine
+  - narrative_consistency_enforcer
+fusion_strategy:
+  inputs:
+  - persona_fusion_bridge
+  - topic_style_advisor
+  blend:
+    # Simplified equal weighting to avoid conflicting influences
+    advisor_ratio: 0.5
+    persona_ratio: 0.5
+  exports:
+    style_weights:
+      persona_ratio: 0.5
+      advisor_ratio: 0.5
+  contract:
+    downstream_usage: consume_only
+integration_instructions:
+- Use this fused persona voice consistently across all modules.
+- Visual prompt tone must match fused voice (no excessive energy if voice is subtle).
+- CTA voice must inherit fused tone — avoid style switch at closing.
+validation_tags:
+- voice_stability
+- personality_consistency
+- style_fusion_integrity
+- fallback_conflict_resolved
+dynamic_style_fusion:
+  module_id: dynamic_style_adaptation
+  enabled: true
+  content_type_mapping:
+    viral_controversy:
+      samuel_christ: 0.2
+      jovial_da_lopez: 0.6
+      gadgetin: 0.2
+      tone_bias: satirical_edge
+    viral_educational:
+      samuel_christ: 0.3
+      jovial_da_lopez: 0.2
+      gadgetin: 0.5
+      tone_bias: authority_accessible
+    viral_emotional:
+      samuel_christ: 0.7
+      jovial_da_lopez: 0.3
+      gadgetin: 0.0
+      tone_bias: vulnerable_relatable
+  viral_mode_triggers:
+  - high_replay_potential: '>0.75'
+  - controversial_topic_detected: true
+  - psychological_trigger_present: true
+topic_style_advisor:
+  profiles:
+  - topic_keywords:
+    - AI
+    - eksistensi
+    - emosi
+    recommended_fusion:
+      samuel_christ: 0.7
+      jovial_da_lopez: 0.2
+      gadgetin: 0.1
+    confidence_score: 0.95
+    fusion_tag: empathetic_satirical_analyst
+  - topic_keywords:
+    - gadget
+    - teknologi
+    - produk
+    recommended_fusion:
+      samuel_christ: 0.1
+      jovial_da_lopez: 0.3
+      gadgetin: 0.6
+    confidence_score: 0.92
+    fusion_tag: empathetic_tech_authority
+  - topic_keywords:
+    - komedi
+    - satire
+    - gen-z
+    - sosial
+    recommended_fusion:
+      samuel_christ: 0.2
+      jovial_da_lopez: 0.6
+      gadgetin: 0.2
+    confidence_score: 0.9
+    fusion_tag: analytical_satirical_healer
+  - topic_keywords:
+    - mental health
+    - healing
+    - perasaan
+    recommended_fusion:
+      samuel_christ: 0.65
+      jovial_da_lopez: 0.35
+      gadgetin: 0.0
+    confidence_score: 0.91
+    fusion_tag: healing_content
+  - topic_keywords:
+    - analisis data
+    - riset
+    - teori
+    - evidence
+    recommended_fusion:
+      samuel_christ: 0.3
+      jovial_da_lopez: 0.0
+      gadgetin: 0.7
+    confidence_score: 0.93
+    fusion_tag: technical_analysis_content
+  - topic_keywords:
+    - komentar budaya
+    - tren sosial
+    - politik
+    recommended_fusion:
+      samuel_christ: 0.2
+      jovial_da_lopez: 0.5
+      gadgetin: 0.3
+    confidence_score: 0.88
+    fusion_tag: cultural_commentary_content
+  default_fusion:
+    samuel_christ: 0.4
+    jovial_da_lopez: 0.4
+    gadgetin: 0.2

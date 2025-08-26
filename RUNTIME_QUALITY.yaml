@@ -1,0 +1,219 @@
+version: 3.9.0
+pattern_ref_prefix: '!RAG_RUNTIME_SAFEGUARD'
+compiled_from:
+- Legacy safeguard protocols
+- Cultural sensitivity enhancements
+module_registration:
+  id: runtime_safeguard
+  role: prevention_engine
+  activated_by:
+  - hallucination_block
+  - flush_protocol
+registered_modules:
+- originality_guard
+- structure_language_enforcer
+ruleset:
+  hallucination_block:
+    enabled: true
+    trigger_keywords:
+    - quantum time travel
+    - psychic future self
+  visual_constraints:
+    forbidden_visual_elements:
+    - two characters interacting physically
+    - high-five
+    - handshake
+    - hug
+    - fine object manipulation
+    - pick up coin
+    - text on screen clearly legible
+    - typing on keyboard close-up
+    - extended continuous movement
+    - over 10s continuous camera shot
+    visual_guard_enforced: true
+    on_violation:
+    - Regenerate prompt with safe fallback
+    - 'Notify user: prompt violated KlingAI constraints'
+enhanced_fact_verification:
+  enabled: true
+  on_hoax: fallback_override_handler
+  on_uncertain: proceed_with_disclaimer
+  outputs:
+    verification_status_with_confidence_score: ${status_label} (${confidence}/100)
+    fact_verification_score: ${confidence}
+enhanced_verification_integration:
+  module_dependencies:
+    blocks_if_hoax:
+    - rag_deep_research_engine
+    - rag_core_modules
+    - script_generation
+    proceeds_if_verified: all_downstream_modules
+    proceeds_with_disclaimer: all_downstream_modules_with_uncertainty_flag
+  handoff_protocols:
+    to_research_engine: verified_content_becomes_research_foundation
+    to_script_generation: verification_status_included_in_final_output
+    to_user_interaction: transparent_verification_process_communication
+validation_tags:
+- enhanced_fact_verification_active
+- hoax_detection_enabled
+- multi_source_verification_required
+- user_education_on_hoax_enabled
+TOPIC_VALIDATOR:
+  input_fields:
+  - title
+  - HOOK
+  ambiguity_threshold: 0.75
+  action_if_ambiguous: fallback_to_default_fusion
+  log_action: true
+fallback_override_handler:
+  triggers:
+    structure_violation: regenerate_once
+    emotion_flat: boost_emotion_glide
+    style_clash: recompute_style_weights
+    low_confidence: add_disclaimer
+    hallucination: educational_correction
+  priority_order:
+  - structure_violation
+  - hallucination
+  - low_confidence
+  - style_clash
+  - emotion_flat
+originality_guard:
+  enabled: true
+  similarity_threshold: 0.75
+  on_trigger: auto_regenerate_with_variation
+  checks:
+  - ngram_overlap:
+      n: 5
+      max_ratio: 0.22
+  - phrase_reuse_limit:
+      max_reused_phrases: 2
+  - internal_history_compare:
+      window: 50
+  outputs:
+    originality_score: ${originality_score}
+  regenerate_policy:
+    constraints:
+    - preserve_verified_facts
+    - keep_structure_but_change_wording_examples_angles
+    - vary_hook_angle_or_cta_wording
+    max_attempts: 1
+structure_language_enforcer:
+  enabled: true
+  enforce_cinegenix_format: true
+  forbid_yaml_output: true
+  allow_script_lang:
+  - ID
+  require_fields_in_order:
+  - Title
+  - ⏱️
+  - 🎥
+  - 🎙️
+  - 😲
+  - 🎬
+  microblock_id_regex: \*ID:[^*]+\*
+  map_emoji_to_fields:
+    ⏱️: timestamp_range
+    🎥: visual_direction
+    🎙️: script
+    😲: emotional_label
+    🎬: scene_transition
+  on_violation: regenerate_once
+validator_yaml_bridge:
+  enforce_output_structure_language: true
+  allowed_languages:
+  - structure: en
+  - script: id
+validators:
+  enhanced_fact_verification:
+    enabled: true
+    on_hoax: fallback_override_handler
+    on_uncertain: proceed_with_disclaimer
+    outputs:
+      verification_status_with_confidence_score: ${status_label} (${confidence}/100)
+      fact_verification_score: ${confidence}
+  originality_guard:
+    enabled: true
+    similarity_threshold: 0.75
+    on_trigger: auto_regenerate_with_variation
+    checks:
+    - ngram_overlap:
+        n: 5
+        max_ratio: 0.22
+    - phrase_reuse_limit:
+        max_reused_phrases: 2
+    - internal_history_compare:
+        window: 50
+    outputs:
+      originality_score: ${originality_score}
+    regenerate_policy:
+      constraints:
+      - preserve_verified_facts
+      - keep_structure_but_change_wording_examples_angles
+      - vary_hook_angle_or_cta_wording
+      max_attempts: 1
+  structure_language_enforcer: &id001
+    enabled: true
+    enforce_cinegenix_format: true
+    forbid_yaml_output: true
+    allow_script_lang:
+    - ID
+    require_fields_in_order:
+    - Title
+    - ⏱️
+    - 🎥
+    - 🎙️
+    - 😲
+    - 🎬
+    microblock_id_regex: \*ID:[^*]+\*
+    map_emoji_to_fields:
+      ⏱️: timestamp_range
+      🎥: visual_direction
+      🎙️: script
+      😲: emotional_label
+      🎬: scene_transition
+    on_violation: regenerate_once
+  fallback_override_handler:
+    triggers:
+      structure_violation: regenerate_once
+      emotion_flat: boost_emotion_glide
+      style_clash: recompute_style_weights
+      low_confidence: add_disclaimer
+      hallucination: educational_correction
+    priority_order:
+    - structure_violation
+    - hallucination
+    - low_confidence
+    - style_clash
+    - emotion_flat
+format_contracts:
+  cinegenix_format: *id001
+safety_contracts:
+  topic_validator:
+    input_fields:
+    - title
+    - HOOK
+    ambiguity_threshold: 0.75
+    action_if_ambiguous: fallback_to_default_fusion
+    log_action: true
+  hallucination_block:
+    enabled: true
+    trigger_keywords:
+    - quantum time travel
+    - psychic future self
+  visual_constraints:
+    forbidden_visual_elements:
+    - two characters interacting physically
+    - high-five
+    - handshake
+    - hug
+    - fine object manipulation
+    - pick up coin
+    - text on screen clearly legible
+    - typing on keyboard close-up
+    - extended continuous movement
+    - over 10s continuous camera shot
+    visual_guard_enforced: true
+    on_violation:
+    - Regenerate prompt with safe fallback
+    - 'Notify user: prompt violated KlingAI constraints'

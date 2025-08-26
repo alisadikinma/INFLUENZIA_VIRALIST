@@ -1,0 +1,370 @@
+version: 3.9.0
+pattern_ref_prefix: '!RAG_CORE_MODULES'
+compiled_from:
+- Hook Template Bank v3.8.1
+- Script Format Blueprint v3.8.1
+default_tone:
+  baseline_emotional_state: curious_engagement_with_cultural_authenticity
+  indonesian_gen_z_markers:
+  - natural_code_switching_indonesian_english
+  - playful_slang_with_respectful_boundaries
+  - meme_friendly_phrasing
+  voice_constraints:
+    no_preachy: true
+    no_too_formal: true
+    no_excessive_emoji: true
+  tone_transitions:
+  - from: curious
+    to: surprised
+    trigger: fact_reveal
+  - from: surprised
+    to: clarified
+    trigger: explain_clearly
+hook_patterns:
+  myth_bust:
+    template: Bukan [assumption], tapi [reality]
+    guardrails:
+    - no_unverified_claims
+  counter_intuitive:
+    template: Semakin [X], malah [Y]
+  what_if:
+    template: Gimana kalau [scenario]?
+  stat_shock:
+    template: '[credible_number]% dari [group] [finding]'
+    requires_citation: true
+viral_hook_engine:
+  module_id: viral_hook_engine
+  enabled: true
+  psychological_triggers:
+    cognitive_dissonance:
+    - pattern: Dulu gue [belief], ternyata [opposite_reality]
+      activation: when topic involves mindset/belief change
+    authority_questioning:
+    - pattern: Yang [authority_figure] gak mau kalian tau tentang [topic]
+      activation: when topic involves industry/institutional critique
+    social_proof_challenge:
+    - pattern: Everyone's doing [trend] wrong, ini cara yang bener
+      activation: when topic involves popular practices
+    group_identity_threat:
+    - pattern: Gen Z yang masih [assumption] perlu denger ini
+      activation: when topic involves generational commentary
+  hook_archetype_pool:
+    personal_contradiction: 0.25
+    exposed_secret: 0.25
+    generational_callout: 0.25
+    cultural_inversion: 0.25
+fallback_chain:
+  module_id: fallback_chain
+  enabled: true
+  primary_fallbacks:
+    style_fusion_failure:
+      condition: fusion_feels_unnatural_or_forced
+      action: revert_to_single_creator_style
+    overlong_block:
+      condition: block_duration_seconds > 5
+      action: auto_split_into_≤5s
+  secondary_fallbacks:
+    missing_citation:
+      condition: claim_requires_citation && citation_missing
+      action: downgrade_claim_to_soft_language
+emotional_valley:
+  enabled: true
+  profile_ref: CORE_PACK.yaml#emotional_glide_engine.glide_profiles.default_valley
+  enforce_mid_segment: true
+  outputs:
+  - valley_start
+  - reflection_hint
+visual_sync_mapper:
+  enabled: true
+edu_mode_engine:
+  triggers:
+  - topic:
+    - AI
+    - sains
+    - sistem kerja
+    - teknologi masa depan
+    tone: reflektif
+  behavior:
+  - prioritize_fact_check: true
+  - simplify_language: true
+  - emphasize_learning: true
+fomo_controversy_engine:
+  module_id: fomo_controversy_engine
+  enabled: true
+  debate_starters:
+  - Kubu A bilang [X], kubu B bilang [Y] — mana yang bener?
+  - Kalau kalian di posisi [role], milih [option1] atau [option2]?
+  guardrails:
+  - no_personal_attack
+  - avoid_false_dichotomy
+  - cite_before_spice
+deep_research_engine:
+  module_id: comprehensive_research_pipeline
+  enabled: true
+  activation_trigger: post_fact_verification_success
+  priority: CRITICAL_CONTENT_ENRICHMENT
+  min_citations_required:
+    basic: 3
+    comprehensive: 7
+    expert: 12
+  citations_output:
+    format: bulleted_links
+    require_domains_note: true
+  inputs:
+    required:
+    - topic
+    - draft_script
+    - locale
+  research_depth_auto_selection:
+    basic_research:
+      trigger_conditions:
+      - simple_topics_with_clear_context
+      - well_established_facts
+      - non_controversial_subjects
+      sources_target: 3_to_5_sources
+    comprehensive_research:
+      trigger_conditions:
+      - complex_technical_topics
+      - trending_controversial_issues
+      - health_medical_information
+      - financial_economic_topics
+      sources_target: 8_to_12_sources
+    expert_level_research:
+      trigger_conditions:
+      - breaking_news_developments
+      - scientific_research_topics
+      - legal_regulatory_matters
+      - policy_government_issues
+      sources_target: 15_plus_sources
+  source_scoring:
+    weights:
+      author_reputation: 0.35
+      domain_authority: 0.25
+      recency: 0.25
+      cross_corroboration: 0.15
+    domain_priority:
+    - primary_sources
+    - peer_reviewed
+    - standards_bodies
+    - gov
+    - reputable_media
+    - aggregators
+    banned_sources:
+    - random_forums
+    - uncited_tweets
+    recency_windows_days:
+      default: 365
+      ai: 180
+      finance: 90
+      health: 730
+  retrieval_policy:
+    max_sources: 12
+    dedupe_by: canonical_url_hash
+    language_bias:
+    - id
+    - en
+  contradiction_detection:
+    enabled: true
+    strategies:
+    - multi_source_crosscheck
+    - claim_vote
+    - minority_report
+    resolution_order:
+    - primary_sources
+    - peer_reviewed
+    - official_statement
+    - consensus_media
+  citation_policy:
+    min_citations: 3
+    include_urls: true
+    format: author_or_org, title, year
+    normalizer_fields:
+    - source
+    - title
+    - url
+    - date
+    - type
+  outputs_contract:
+    keys:
+    - research_summary
+    - citations
+    - confidence_score
+    - claim_register
+  claim_register:
+    schema:
+      id: string
+      text: string
+      type: fact|opinion|prediction
+      status: verified|refuted|uncertain
+      evidence_ids: list
+      confidence: 0..1
+  handoff:
+    to_hook_generator: research_insights_inform_viral_hook_creation
+    to_narrative_consistency_enforcer: numbers_and_entities_locked
+    to_style_fusion: domain_persona_bias_adjusted_by_research_depth
+  metrics:
+    hallucination_risk_score: 0..1
+  invariants:
+  - citation_policy.min_citations >= 3
+  - 0.0 <= confidence_score <= 1.0
+smart_search_query_builder:
+  enabled: true
+  patterns:
+  - '{topic} Indonesian context'
+  - '{topic} data 2023..now'
+  - '{topic} expert critique'
+  output:
+    queries: 5
+evidence_distiller:
+  enabled: true
+  rules:
+  - prefer_primary_sources
+  - triangulate_at_least: 3
+  outputs:
+  - distilled_facts
+  - citations_list
+research_engine_integration:
+  handoff_protocols:
+    from_fact_verification: verified_content_becomes_research_foundation
+    to_hook_generator: research_insights_inform_viral_hook_creation
+    to_style_fusion: research_depth_influences_creator_selection
+    to_script_structure: research_synthesis_shapes_content_organization
+  performance_optimization:
+    research_caching: reuse_insights_within_session_only
+    source_prioritization: rank_sources_by_reliability_and_viral_potential
+    insight_extraction: automated_viral_angle_identification
+    cultural_adaptation: automatic_indonesian_context_integration
+validation_tags:
+- deep_research_engine_active
+- multi_source_research_complete
+- indonesian_context_integrated
+- viral_angles_identified
+- educational_value_confirmed
+modules:
+- name: hook_generator
+  function: Generates culturally grounded hook lines
+  depends_on: []
+- name: emotional_pacer
+  function: Modulates emotional pacing across segments
+  depends_on:
+  - hook_generator
+- name: style_imprinter
+  function: Applies creator style DNA to script
+  depends_on:
+  - hook_generator
+- name: tone_shifter
+  function: Adjusts tone transitions per segment
+  depends_on:
+  - emotional_pacer
+  - style_imprinter
+- name: visual_sync_mapper
+  function: Aligns script segments to visual beat timing
+  depends_on:
+  - tone_shifter
+- name: emotional_glide_engine
+  function: Controls micro-emotional transitions within segments
+  depends_on:
+  - emotional_pacer
+  - tone_shifter
+- name: validator_interface
+  function: Ensures output meets all QA, safety, and engagement standards
+  depends_on:
+  - hook_generator
+  - style_imprinter
+  - emotional_pacer
+  - tone_shifter
+- name: fallback_tone_handler
+  function: Fallback engine when tone/style mismatch detected
+  depends_on:
+  - validator_interface
+- name: twist_optimizer
+  function: Ensures narrative twists follow emotional & logical arc
+  depends_on:
+  - emotional_pacer
+  - tone_shifter
+- name: thumbnail_emotion_checker
+  function: Verifies thumbnail tone alignment to script content
+  depends_on:
+  - hook_generator
+  - emotional_glide_engine
+- name: edu_mode_engine
+  function: Adjusts content style to reflective educational tone when triggered
+  depends_on:
+  - hook_generator
+  - style_imprinter
+- name: narrative_consistency_enforcer
+  function: Ensures logical coherence and segment consistency across script
+  depends_on:
+  - hook_generator
+  - tone_shifter
+  - style_imprinter
+module_index:
+  hook_generator: '*modules[name=hook_generator]'
+  visual_sync_mapper: '*modules[name=visual_sync_mapper]'
+  narrative_consistency_enforcer: '*modules[name=narrative_consistency_enforcer]'
+  emotional_glide_engine: '*modules[name=emotional_glide_engine]'
+  viral_hook_engine: '*modules[name=viral_hook_engine]'
+  fomo_controversy_engine: '*modules[name=fomo_controversy_engine]'
+  deep_research_engine: '*modules[name=deep_research_engine]'
+  edu_mode_engine: '*modules[name=edu_mode_engine]'
+emotional_glide_engine:
+  aliases:
+    strong_valley: valley_to_climax
+  glide_profiles:
+    default_valley:
+      phases:
+      - burst
+      - hold
+      - glide
+      valley_window: 30s–45s
+    shock:
+      pattern: burst→hold
+    awe:
+      pattern: hold→glide
+    curiosity:
+      pattern: explain→anchor
+    melancholy:
+      pattern: drift→pause
+    intrigue:
+      pattern: tease→punch
+    valley_to_climax:
+      pattern: valley→rise→climax
+  modulation_rules:
+    intensity_modulation:
+      based_on:
+      - perceived_retention_cues
+      - segment_emotion_score
+      action: adjust_segment_pacing_and_music_cue
+    visual_transition_support:
+      use_overlay: true
+      transition_styles:
+      - fade-in
+      - flash-cut
+      - zoom
+    audio_support:
+      use_ambient_emotion: true
+      cue_library:
+      - hope
+      - tension
+      - resolution
+      - mystery
+  activation_conditions:
+  - narrative shift detected between segments
+  - emotional contrast > 0.4 threshold
+  - CTA type requires emotional ramp-up
+  validation_tags:
+  - emotional_shift_consistency
+  - glide_duration_tuning
+  - audio_visual_support_alignment
+  - transition_type_match
+microblock:
+  split_rules:
+    default_max_seconds: 5
+    long_mode_max_seconds: 8
+  segmentation_policy:
+    - keep_semantic_units: true
+    - avoid_mid_sentence_splits: true
+    - prefer_cut_on_breath: true
+  id_format: 'HOOK-A1|BODY-A1a|PEAK-A1'
+  validation:
+    - use: RUNTIME_QUALITY.validators.structure_language_enforcer
